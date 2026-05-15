@@ -1,0 +1,39 @@
+{
+  "tech_stack": [
+    { "name": "Proxmox", "cat": "Virtualización", "level": 95, "color": "#FF6B35" },
+    { "name": "VMware", "cat": "Virtualización", "level": 90, "color": "#60A5FA" },
+    { "name": "Firewalls", "cat": "Seguridad", "level": 92, "color": "#EF4444" },
+    { "name": "VLANs", "cat": "Redes", "level": 95, "color": "#10B981" },
+    { "name": "Backups Inmutables", "cat": "Seguridad", "level": 96, "color": "#8B5CF6" },
+    { "name": "Docker", "cat": "DevOps", "level": 85, "color": "#2496ED" },
+    { "name": "Linux", "cat": "Sistemas", "level": 93, "color": "#FCC624" },
+    { "name": "Windows Server", "cat": "Sistemas", "level": 90, "color": "#0078D4" },
+    { "name": "Python", "cat": "Scripting", "level": 80, "color": "#3776AB" },
+    { "name": "pfSense", "cat": "Seguridad", "level": 88, "color": "#E02424" },
+    { "name": "MikroTik", "cat": "Redes", "level": 85, "color": "#6366F1" },
+    { "name": "Automatización", "cat": "Procesos", "level": 91, "color": "#EC4899" }
+  ],
+  "hard_skills": [
+    { "name": "System Architecture", "level": 94 },
+    { "name": "Infrastructure Security", "level": 92 },
+    { "name": "Disaster Recovery", "level": 96 },
+    { "name": "Network Segmentation", "level": 95 },
+    { "name": "System Automation", "level": 85 },
+    { "name": "Technical Documentation", "level": 90 }
+  ],
+  "soft_skills": [
+    "Problem Solving",
+    "Rapid Learning",
+    "Technical Leadership",
+    "Crisis Management",
+    "Clear Documentation",
+    "Strategic Vision"
+  ],
+  "specializations": [
+    "Silent Critical Infrastructure",
+    "Disaster Recovery Plans (DRP)",
+    "Security by Design",
+    "Operational Process Automation",
+    "AI Integration in Workflows"
+  ]
+}

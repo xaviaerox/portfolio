@@ -1,0 +1,47 @@
+[
+  {
+    "id": "exp-1",
+    "company": "Solutech",
+    "role": "Fundador & Arquitecto de Infraestructura",
+    "period": "2024 – Presente",
+    "location": "Almería · Murcia · Remoto",
+    "description": "Lidero la transformación digital y la gestión de infraestructuras críticas para pequeñas y medianas empresas. Diseño sistemas resilientes, automatizo procesos y garantizo la continuidad del negocio.",
+    "stack": ["Proxmox", "VLANs", "Firewalls", "Backups Inmutables", "Wiki.js", "Docker"],
+    "achievements": [
+      "Diseño e implementación de clústeres de virtualización con Proxmox reduciendo costes de hardware en un 60%.",
+      "Estrategias de backup 3-2-1 con recuperación garantizada en menos de 2 horas.",
+      "Blindaje de redes y cumplimiento normativo RGPD para clientes del sector legal y salud."
+    ],
+    "color": "#6366f1"
+  },
+  {
+    "id": "exp-2",
+    "company": "Consultor IT Independiente",
+    "role": "Especialista en Infraestructura y Seguridad",
+    "period": "2018 – 2024",
+    "location": "Remoto",
+    "description": "Asesoramiento y ejecución de proyectos de infraestructura para diversas empresas. Especializado en virtualización, seguridad perimetral y planes de recuperación ante desastres.",
+    "stack": ["VMware", "pfSense", "Veeam", "Linux", "Windows Server", "MikroTik"],
+    "achievements": [
+      "Migración de entornos físicos a virtuales para más de 20 clientes.",
+      "Implementación de sistemas de monitorización activa reduciendo incidencias en un 40%.",
+      "Auditorías de seguridad y securización de entornos corporativos."
+    ],
+    "color": "#06b6d4"
+  },
+  {
+    "id": "exp-3",
+    "company": "Técnico de Sistemas / Administrador",
+    "role": "Administrador de Sistemas Junior a Senior",
+    "period": "2012 – 2018",
+    "location": "Presencial",
+    "description": "Gestión de parques informáticos, servidores y redes. Soporte avanzado y resolución de problemas complejos.",
+    "stack": ["Windows Server", "Active Directory", "Cisco", "Linux", "Scripting", "Hardware"],
+    "achievements": [
+      "Gestión integral de infraestructuras de servidores y redes.",
+      "Automatización de tareas repetitivas mediante scripting.",
+      "Liderazgo en la resolución de incidencias críticas."
+    ],
+    "color": "#8b5cf6"
+  }
+]

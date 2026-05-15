@@ -1,0 +1,44 @@
+[
+  {
+    "id": "proj-1",
+    "name": "Virtualización de Servidores",
+    "tagline": "Cooperativa en El Ejido",
+    "description": "Reducción de hardware físico tras implementar Proxmox con 5 máquinas virtuales críticas. Mejora en la velocidad de acceso a ERP y backups centralizados.",
+    "stack": ["Proxmox", "VLANs", "ERP", "Backups", "Linux"],
+    "highlights": [
+      "Reducción del consumo eléctrico en un 60%.",
+      "Backups centralizados con tiempos de recuperación de minutos.",
+      "Mejora notable en la fluidez del ERP."
+    ],
+    "color": "#6366f1",
+    "gradient": "from-indigo-500/20 to-purple-500/10"
+  },
+  {
+    "id": "proj-2",
+    "name": "Plan de Desastre",
+    "tagline": "Distribuidora en Huércal",
+    "description": "Estrategia 3-2-1 de copias de seguridad con réplica inmutable en la nube para protección contra Ransomware. Tiempo de recuperación garantizado < 2h.",
+    "stack": ["Regla 3-2-1", "Inmutable Cloud", "Automatización", "Seguridad"],
+    "highlights": [
+      "Tranquilidad total ante ataques de cifrado.",
+      "Tiempo de Recuperación (RTO) < 2 horas.",
+      "Eliminación de dependencia de soportes físicos manuales."
+    ],
+    "color": "#06b6d4",
+    "gradient": "from-cyan-500/20 to-blue-500/10"
+  },
+  {
+    "id": "proj-3",
+    "name": "Blindaje de Red",
+    "tagline": "Notaría en Almería Centro",
+    "description": "Implementación de VLANs para separar wifi de invitados de gestión, firewall hardware con filtrado de contenidos y cumplimiento de normativa.",
+    "stack": ["Firewall Hardware", "VLANs", "RGPD", "Seguridad", "VoIP"],
+    "highlights": [
+      "Aislamiento total de datos sensibles.",
+      "Cumplimiento técnico de la normativa RGPD.",
+      "Navegación segura y controlada."
+    ],
+    "color": "#8b5cf6",
+    "gradient": "from-violet-500/20 to-purple-500/10"
+  }
+]

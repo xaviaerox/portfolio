@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ach-1",
+    "title": "Fundación de Solutech",
+    "description": "Creación de una consultoría IT boutique enfocada en la continuidad operativa y la arquitectura silenciosa.",
+    "year": "2024",
+    "icon": "🚀"
+  },
+  {
+    "id": "ach-2",
+    "title": "Reducción de Costes del 60%",
+    "description": "Consolidación de infraestructura física a virtual mediante Proxmox para una gran cooperativa.",
+    "year": "2024",
+    "icon": "⚡"
+  },
+  {
+    "id": "ach-3",
+    "title": "12+ Años de Experiencia",
+    "description": "Trayectoria sólida en administración de sistemas, redes y seguridad.",
+    "year": "2026",
+    "icon": "🛡️"
+  }
+]

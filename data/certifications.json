@@ -1,0 +1,40 @@
+[
+  {
+    "id": "cert-cisco",
+    "provider": "Cisco",
+    "color": "#1BA0D7",
+    "icon": "C",
+    "items": [
+      { "name": "Introduction to Cybersecurity", "year": "2024", "skills": ["Cybersecurity", "Network Security"] },
+      { "name": "English for IT 1", "year": "2024", "skills": ["English", "IT Communication"] }
+    ]
+  },
+  {
+    "id": "cert-google",
+    "provider": "Google",
+    "color": "#4285F4",
+    "icon": "G",
+    "items": [
+      { "name": "Google Ciberseguridad", "year": "2024", "skills": ["Cybersecurity", "Python", "SIEM"] },
+      { "name": "Google IA", "year": "2024", "skills": ["AI", "Prompt Engineering"] }
+    ]
+  },
+  {
+    "id": "cert-ia",
+    "provider": "University of Helsinki",
+    "color": "#FF6B35",
+    "icon": "AI",
+    "items": [
+      { "name": "Elements of AI", "year": "2023", "skills": ["AI", "Machine Learning", "Logic"] }
+    ]
+  },
+  {
+    "id": "cert-digitalizacion",
+    "provider": "CEOE",
+    "color": "#10b981",
+    "icon": "D",
+    "items": [
+      { "name": "Operaciones con tecnologías habilitadoras digitales", "year": "2023", "skills": ["Digitalización", "Tech"] }
+    ]
+  }
+]
