@@ -3,19 +3,19 @@
     "id": "cert-cisco",
     "provider": "Cisco",
     "color": "#1BA0D7",
-    "icon": "🌐",
+    "icon": "C",
     "items": [
       { 
         "name": "Introduction to Cybersecurity", 
         "year": "2024", 
         "skills": ["Cybersecurity", "Network Security"],
-        "badge": "/certificaciones/CISCO/I2CS__1_.png"
+        "badge": "certificaciones/CISCO/I2CS__1_.png"
       },
       { 
         "name": "English for IT 1", 
         "year": "2024", 
         "skills": ["English", "IT Communication"],
-        "badge": "/certificaciones/CISCO/English for IT 1.png"
+        "badge": "certificaciones/CISCO/English for IT 1.png"
       }
     ]
   },
@@ -23,7 +23,7 @@
     "id": "cert-google",
     "provider": "Google",
     "color": "#4285F4",
-    "icon": "🤖",
+    "icon": "G",
     "items": [
       { 
         "name": "Google Ciberseguridad", 
@@ -34,7 +34,7 @@
         "name": "Google IA", 
         "year": "2024", 
         "skills": ["AI", "Prompt Engineering"],
-        "badge": "/certificaciones/Google/Google IA/Badges-Credly/00.png"
+        "badge": "certificaciones/Google/Google IA/Badges-Credly/00.png"
       }
     ]
   },
@@ -42,13 +42,13 @@
     "id": "cert-ia",
     "provider": "University of Helsinki",
     "color": "#FF6B35",
-    "icon": "🎓",
+    "icon": "AI",
     "items": [
       { 
         "name": "Elements of AI", 
         "year": "2023", 
         "skills": ["AI", "Machine Learning", "Logic"],
-        "badge": "/certificaciones/IA/Elements of AI.png"
+        "badge": "certificaciones/IA/Elements of AI.png"
       }
     ]
   },
@@ -56,7 +56,7 @@
     "id": "cert-digitalizacion",
     "provider": "CEOE",
     "color": "#10b981",
-    "icon": "🏢",
+    "icon": "D",
     "items": [
       { 
         "name": "Operaciones con tecnologías habilitadoras digitales", 
