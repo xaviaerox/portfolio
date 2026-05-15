@@ -1,42 +1,43 @@
 [
   {
     "id": "proj-1",
-    "name": "Virtualización de Servidores",
-    "tagline": "Cooperativa en El Ejido",
-    "description": "Reducción de hardware físico tras implementar Proxmox con 5 máquinas virtuales críticas. Mejora en la velocidad de acceso a ERP y backups centralizados.",
-    "stack": ["Proxmox", "VLANs", "ERP", "Backups", "Linux"],
+    "name": "Queryclin",
+    "tagline": "HCE Intelligence Dashboard",
+    "description": "Plataforma de exploración y análisis de Historias Clínicas Electrónicas con privacidad absoluta (Local-First). Motor de búsqueda basado en Okapi BM25 capaz de procesar hasta 100.000 pacientes en milisegundos en el navegador.",
+    "stack": ["React 19", "TypeScript", "IndexedDB", "Web Workers", "BM25"],
     "highlights": [
-      "Reducción del consumo eléctrico en un 60%.",
-      "Backups centralizados con tiempos de recuperación de minutos.",
-      "Mejora notable en la fluidez del ERP."
-    ],
-    "color": "#6366f1",
-    "gradient": "from-indigo-500/20 to-purple-500/10"
-  },
-  {
-    "id": "proj-2",
-    "name": "Plan de Desastre",
-    "tagline": "Distribuidora en Huércal",
-    "description": "Estrategia 3-2-1 de copias de seguridad con réplica inmutable en la nube para protección contra Ransomware. Tiempo de recuperación garantizado < 2h.",
-    "stack": ["Regla 3-2-1", "Inmutable Cloud", "Automatización", "Seguridad"],
-    "highlights": [
-      "Tranquilidad total ante ataques de cifrado.",
-      "Tiempo de Recuperación (RTO) < 2 horas.",
-      "Eliminación de dependencia de soportes físicos manuales."
+      "Privacidad Local-First absoluta.",
+      "Procesamiento de 100k+ registros en RAM.",
+      "Motor de búsqueda clínico avanzado.",
+      "\"Tu trabajo de ingeniería de datos me llamó la atención...\" — Denis, Software Engineer"
     ],
     "color": "#06b6d4",
     "gradient": "from-cyan-500/20 to-blue-500/10"
   },
   {
-    "id": "proj-3",
-    "name": "Blindaje de Red",
-    "tagline": "Notaría en Almería Centro",
-    "description": "Implementación de VLANs para separar wifi de invitados de gestión, firewall hardware con filtrado de contenidos y cumplimiento de normativa.",
-    "stack": ["Firewall Hardware", "VLANs", "RGPD", "Seguridad", "VoIP"],
+    "id": "proj-2",
+    "name": "StockFlow",
+    "tagline": "PWA para Dolibarr ERP",
+    "description": "Aplicación web progresiva diseñada para optimizar la gestión de almacén, trazabilidad y facturación. Conexión directa y desacoplada con la API REST de Dolibarr ERP sin servidores intermediarios.",
+    "stack": ["Vanilla JS", "CSS Glassmorphism", "PWA", "Dolibarr API", "QR Scanner"],
     "highlights": [
-      "Aislamiento total de datos sensibles.",
-      "Cumplimiento técnico de la normativa RGPD.",
-      "Navegación segura y controlada."
+      "Escáner de cámara integrado.",
+      "Arquitectura 100% Stateless.",
+      "Control de trazabilidad por nº de serie."
+    ],
+    "color": "#6366f1",
+    "gradient": "from-indigo-500/20 to-purple-500/10"
+  },
+  {
+    "id": "proj-3",
+    "name": "Solutech",
+    "tagline": "Consultoría IT & Arquitectura",
+    "description": "El proyecto global de marca donde diseño e implemento sistemas de alta disponibilidad, planes de contingencia y blindaje de redes para empresas, aplicando una filosofía de arquitectura silenciosa.",
+    "stack": ["Proxmox", "VLANs", "Firewalls", "Regla 3-2-1", "Continuidad"],
+    "highlights": [
+      "Diseño de sistemas redundantes.",
+      "Planes de contingencia inmutables.",
+      "Seguridad por diseño (Zero Trust)."
     ],
     "color": "#8b5cf6",
     "gradient": "from-violet-500/20 to-purple-500/10"
