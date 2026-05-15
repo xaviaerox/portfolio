@@ -2,11 +2,11 @@
   "name": "Xavi Alonso",
   "role": "Operador IT & Arquitecto de Infraestructura",
   "tagline": "Diseño sistemas que no fallan. Automatizo lo complejo. Protejo tu operativa.",
-  "bio": "Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Fundé Solutech para transformar la informática tradicional en una ventaja operativa invisible. Mi enfoque no es reparar cuando algo se rompe, sino diseñar sistemas que no fallen. Gestiono la tecnología de pequeñas empresas con el rigor de una gran infraestructura SaaS, priorizando la documentación, la automatización y la continuidad real del negocio.",
+  "bio": "Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Como Arquitecto IT y desarrollador, combino la administración de sistemas con la creación de software a medida. He diseñado soluciones potentes como Queryclin (un dashboard inteligente para historias clínicas con privacidad local-first) y StockFlow (una PWA para gestión de stocks sobre Dolibarr), además de liderar Solutech para ofrecer consultoría de alta disponibilidad.",
   "location": "Almería · Murcia · Remoto",
   "email": "xaviaerox@gmail.com",
   "github": "https://github.com/xaviaerox",
   "linkedin": "https://linkedin.com/in/xavialonso",
   "philosophy": "La mejor tecnología es la que no se nota. Arquitectura de continuidad, seguridad por diseño y automatización extrema.",
-  "skills_summary": "Infraestructura, Seguridad, Virtualización, Automatización, IA"
+  "skills_summary": "Infraestructura, Seguridad, Desarrollo Web, Automatización, IA"
 }

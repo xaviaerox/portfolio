@@ -584,11 +584,16 @@ function Certifications() {
                           <span style={{ color: "#fff", fontSize: 13, fontFamily: "'Syne', sans-serif", fontWeight: 600, flex: 1 }}>{item.name}</span>
                           <span style={{ color: cert.color, fontFamily: "'Space Mono', monospace", fontSize: 11, flexShrink: 0, marginLeft: 12 }}>{item.year}</span>
                         </div>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: item.badge ? 12 : 0 }}>
                           {item.skills.map(s => (
                             <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'Space Mono', monospace" }}>{s}</span>
                           ))}
                         </div>
+                        {item.badge && (
+                          <div style={{ marginTop: 8 }}>
+                            <img src={item.badge} alt={item.name} style={{ height: 60, borderRadius: 6, border: "1px solid rgba(255,255,255,0.05)" }} />
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
