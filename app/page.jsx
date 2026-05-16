@@ -14,13 +14,8 @@ const LangContext = createContext();
 
 import PROFILE from "../data/profile.json";
 import SKILLS from "../data/skills.json";
-
-const TECH_STACK = SKILLS.tech_stack;
-
 import EXPERIENCE from "../data/experience.json";
-
 import CERTIFICATIONS from "../data/certifications.json";
-
 import PROJECTS from "../data/projects.json";
 
 // ============================================================
@@ -178,7 +173,7 @@ function Nav({ scrollY }) {
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 16, fontWeight: 700, color: "#f97316", letterSpacing: 2 }}>
           XA<span style={{ color: "rgba(249,115,22,0.4)" }}>_</span>
         </span>
-        <div style={{ display: "flex", gap: 36 }}>
+        <div className="nav-links" style={{ display: "flex", gap: 36 }}>
           {links.map(l => (
             <button key={l.id} onClick={() => scrollTo(l.id)}
               style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.55)", fontSize: 13, fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "color 0.2s", padding: "4px 0" }}
@@ -208,6 +203,7 @@ function Nav({ scrollY }) {
 
           {/* Hire Me Button */}
           <button
+            className="desktop-only"
             onClick={() => scrollTo("Contact")}
             style={{
               background: "transparent", border: "1px solid rgba(249,115,22,0.5)", color: "#f97316",
@@ -219,8 +215,30 @@ function Nav({ scrollY }) {
           >
             {lang === 'es' ? 'CONTRÁTAME' : 'HIRE ME'}
           </button>
+
+          {/* Hamburger Button */}
+          <button className="mobile-only" onClick={() => setOpen(!open)}
+            style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 24, padding: "4px" }}
+          >
+            {open ? "✕" : "☰"}
+          </button>
         </div>
       </div>
+      {/* Mobile Menu */}
+      {open && (
+        <div className="mobile-only" style={{
+          position: "fixed", top: 68, left: 0, right: 0, bottom: 0,
+          background: "rgba(5,5,15,0.95)", backdropFilter: "blur(20px)",
+          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+          gap: 32, zIndex: 99,
+        }}>
+          {links.map(l => (
+            <button key={l.id} onClick={() => scrollTo(l.id)}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 18, fontFamily: "'Space Mono', monospace" }}
+            >{l.label}</button>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }
@@ -230,8 +248,9 @@ function Nav({ scrollY }) {
 // ============================================================
 
 function Hero() {
+  const { lang } = useContext(LangContext);
   const [mounted, setMounted] = useState(false);
-  const [tagline] = useTypewriter(PROFILE.tagline, 45, 1200);
+  const [tagline] = useTypewriter(PROFILE[lang].tagline, 45, 1200);
   useEffect(() => { setTimeout(() => setMounted(true), 100); }, []);
 
   return (
@@ -255,7 +274,7 @@ function Hero() {
           transition: "all 0.6s ease 0.1s",
         }}>
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#10b981", boxShadow: "0 0 8px #10b981", display: "inline-block" }} />
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>AVAILABLE FOR OPPORTUNITIES</span>
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>{lang === 'es' ? 'DISPONIBLE PARA OPORTUNIDADES' : 'AVAILABLE FOR OPPORTUNITIES'}</span>
         </div>
 
         {/* Name and Photo */}
@@ -273,7 +292,7 @@ function Hero() {
             fontSize: "clamp(52px, 8vw, 96px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: -2,
             color: "#fff", fontFamily: "'Syne', sans-serif",
           }}>
-            {PROFILE.name.split(" ").map((w, i) => (
+            {PROFILE[lang].name.split(" ").map((w, i) => (
               <span key={i} style={{ display: "block" }}>
                 {i === 1 ? <span style={{ WebkitTextStroke: "1px rgba(249,115,22,0.7)", WebkitTextFillColor: "transparent", color: "transparent" }}>{w}</span> : w}
               </span>
@@ -299,7 +318,7 @@ function Hero() {
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(20px)",
           transition: "all 0.7s ease 0.4s",
         }}>
-          {PROFILE.role}
+          {PROFILE[lang].role}
         </div>
 
         {/* Tagline */}
@@ -327,7 +346,7 @@ function Hero() {
             }}
             onMouseEnter={e => { e.target.style.transform = "translateY(-2px)"; e.target.style.boxShadow = "0 8px 50px rgba(249,115,22,0.5)"; }}
             onMouseLeave={e => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 0 40px rgba(249,115,22,0.3)"; }}
-          >VIEW PROJECTS →</button>
+          >{lang === 'es' ? 'VER PROYECTOS →' : 'VIEW PROJECTS →'}</button>
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             style={{
@@ -337,7 +356,7 @@ function Hero() {
             }}
             onMouseEnter={e => { e.target.style.borderColor = "rgba(255,255,255,0.4)"; e.target.style.color = "#fff"; }}
             onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.15)"; e.target.style.color = "rgba(255,255,255,0.75)"; }}
-          >GET IN TOUCH</button>
+          >{lang === 'es' ? 'CONTACTAR' : 'GET IN TOUCH'}</button>
         </div>
 
         {/* Stats row */}
@@ -347,7 +366,10 @@ function Hero() {
           borderTop: "1px solid rgba(255,255,255,0.06)",
           opacity: mounted ? 1 : 0, transition: "opacity 0.8s ease 1.1s",
         }}>
-          {[["12+", "Años Exp."], ["3+", "Casos Éxito"], ["6+", "Certificados"], ["100%", "Disponibilidad"]].map(([n, l]) => (
+          {(lang === 'es' 
+            ? [["12+", "Años Exp."], ["3+", "Casos Éxito"], ["6+", "Certificados"], ["100%", "Disponibilidad"]]
+            : [["12+", "Years Exp."], ["3+", "Success Cases"], ["6+", "Certifications"], ["100%", "Availability"]]
+          ).map(([n, l]) => (
             <div key={l} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 32, fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", lineHeight: 1 }}>{n}</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", fontFamily: "'Space Mono', monospace", letterSpacing: 1, marginTop: 6 }}>{l}</div>
@@ -370,32 +392,46 @@ function Hero() {
 // ============================================================
 
 function About() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.1);
-  const traits = [
-    { icon: "⚡", label: "Systems Thinker", desc: "See architecture holistically" },
-    { icon: "🤖", label: "AI Engineer", desc: "LLMs, RAG, AI pipelines" },
-    { icon: "🔬", label: "Problem Solver", desc: "Debug anything, anywhere" },
-    { icon: "🚀", label: "Fast Learner", desc: "New tech in days, not weeks" },
-    { icon: "🏗️", label: "Architect", desc: "Scalable, clean systems" },
-    { icon: "🔄", label: "Automator", desc: "Eliminate repetition at scale" },
-  ];
+  const traits = lang === 'es'
+    ? [
+        { icon: "⚡", label: "Pensador Sistémico", desc: "Ver la arquitectura de forma holística" },
+        { icon: "🤖", label: "Ingeniero de IA", desc: "LLMs, RAG, pipelines de IA" },
+        { icon: "🔬", label: "Solucionador de Problemas", desc: "Depurar cualquier cosa, en cualquier lugar" },
+        { icon: "🚀", label: "Aprendizaje Rápido", desc: "Nueva tecnología en días, no semanas" },
+        { icon: "🏗️", label: "Arquitecto", desc: "Sistemas escalables y limpios" },
+        { icon: "🔄", label: "Automatizador", desc: "Eliminar la repetición a escala" },
+      ]
+    : [
+        { icon: "⚡", label: "Systems Thinker", desc: "See architecture holistically" },
+        { icon: "🤖", label: "AI Engineer", desc: "LLMs, RAG, AI pipelines" },
+        { icon: "🔬", label: "Problem Solver", desc: "Debug anything, anywhere" },
+        { icon: "🚀", label: "Fast Learner", desc: "New tech in days, not weeks" },
+        { icon: "🏗️", label: "Architect", desc: "Scalable, clean systems" },
+        { icon: "🔄", label: "Automator", desc: "Eliminate repetition at scale" },
+      ];
 
   return (
     <section id="about" style={{ background: "#0c0a09", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="01 / ABOUT" />
+        <SectionLabel label={lang === 'es' ? "01 / SOBRE MÍ" : "01 / ABOUT"} />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start", marginTop: 60 }}>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-30px)", transition: "all 0.8s ease" }}>
             <h2 style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", lineHeight: 1.1, marginBottom: 28 }}>
-              Engineer by logic,<br /><span style={{ color: "#f97316" }}>creator</span> by passion.
+              {lang === 'es' ? (
+                <>Ingeniero por lógica,<br /><span style={{ color: "#f97316" }}>creador</span> por pasión.</>
+              ) : (
+                <>Engineer by logic,<br /><span style={{ color: "#f97316" }}>creator</span> by passion.</>
+              )}
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.9, marginBottom: 20, fontFamily: "system-ui" }}>{PROFILE.bio}</p>
+            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.9, marginBottom: 20, fontFamily: "system-ui" }}>{PROFILE[lang].bio}</p>
             <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, lineHeight: 1.8, fontFamily: "'Space Mono', monospace", borderLeft: "2px solid rgba(249,115,22,0.5)", paddingLeft: 20, marginTop: 32 }}>
-              "{PROFILE.philosophy}"
+              "{PROFILE[lang].philosophy}"
             </p>
           </div>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(30px)", transition: "all 0.8s ease 0.2s" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 30 }}>
               {traits.map((t, i) => (
                 <div key={t.label}
                   style={{
@@ -426,17 +462,19 @@ function About() {
 // ============================================================
 
 function TechStack() {
+  const { lang } = useContext(LangContext);
+  const TECH_STACK = SKILLS[lang].tech_stack;
   const [ref, inView] = useInView(0.05);
-  const [filter, setFilter] = useState("All");
-  const categories = ["All", ...new Set(TECH_STACK.map(t => t.cat))];
-  const filtered = filter === "All" ? TECH_STACK : TECH_STACK.filter(t => t.cat === filter);
+  const [filter, setFilter] = useState(lang === 'es' ? "Todas" : "All");
+  const categories = [lang === 'es' ? "Todas" : "All", ...new Set(TECH_STACK.map(t => t.cat))];
+  const filtered = filter === (lang === 'es' ? "Todas" : "All") ? TECH_STACK : TECH_STACK.filter(t => t.cat === filter);
 
   return (
     <section id="stack" style={{ background: "#1c1917", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="02 / TECH STACK" />
+        <SectionLabel label={lang === 'es' ? "02 / TECNOLOGÍAS" : "02 / TECH STACK"} />
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 16 }}>
-          Technologies I master
+          {lang === 'es' ? "Tecnologías que domino" : "Technologies I master"}
         </h2>
 
         {/* Filter pills */}
@@ -490,15 +528,16 @@ function TechStack() {
 // ============================================================
 
 function Experience() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.05);
   const [expanded, setExpanded] = useState(null);
 
   return (
     <section id="experience" style={{ background: "#0c0a09", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="03 / EXPERIENCE" />
+        <SectionLabel label={lang === 'es' ? "03 / EXPERIENCIA" : "03 / EXPERIENCE"} />
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 60 }}>
-          Career evolution
+          {lang === 'es' ? "Evolución profesional" : "Career evolution"}
         </h2>
 
         <div style={{ position: "relative" }}>
@@ -544,7 +583,7 @@ function Experience() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
                     <div>
                       <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: exp.color, letterSpacing: 2, marginBottom: 6 }}>{exp.period}</div>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: "#fff", marginBottom: 2 }}>{exp.role}</div>
+                      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: "#fff", marginBottom: 2 }}>{exp[`role_${lang}`]}</div>
                       <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Space Mono', monospace" }}>{exp.company} · {exp.location}</div>
                     </div>
                     <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 18, transition: "transform 0.3s", transform: expanded === exp.id ? "rotate(180deg)" : "rotate(0)" }}>▼</div>
@@ -553,7 +592,7 @@ function Experience() {
 
                 {expanded === exp.id && (
                   <div style={{ padding: "0 28px 28px", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-                    <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.8, marginTop: 20, marginBottom: 20, fontFamily: "system-ui" }}>{exp.description}</p>
+                    <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 14, lineHeight: 1.8, marginTop: 20, marginBottom: 20, fontFamily: "system-ui" }}>{exp[`description_${lang}`]}</p>
 
                     {/* Stack */}
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
@@ -564,7 +603,7 @@ function Experience() {
 
                     {/* Achievements */}
                     <div>
-                      {exp.achievements.map(a => (
+                      {exp[`achievements_${lang}`].map(a => (
                         <div key={a} style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 10 }}>
                           <span style={{ color: exp.color, fontSize: 12, marginTop: 2, flexShrink: 0 }}>◆</span>
                           <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, lineHeight: 1.6, fontFamily: "system-ui" }}>{a}</span>
@@ -587,21 +626,25 @@ function Experience() {
 // ============================================================
 
 function Certifications() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.05);
   const [expanded, setExpanded] = useState(null);
 
   return (
     <section id="certifications" style={{ background: "#1c1917", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="04 / CERTIFICATIONS" />
+        <SectionLabel label={lang === 'es' ? "04 / CERTIFICACIONES" : "04 / CERTIFICATIONS"} />
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 16 }}>
-          Knowledge graph
+          {lang === 'es' ? "Grafo de conocimiento" : "Knowledge graph"}
         </h2>
         <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, fontFamily: "'Space Mono', monospace", marginBottom: 60 }}>
-          {CERTIFICATIONS.reduce((a, c) => a + c.items.length, 0)} certifications across {CERTIFICATIONS.length} providers
+          {lang === 'es' 
+            ? `${CERTIFICATIONS.reduce((a, c) => a + c.items.length, 0)} certificaciones en ${CERTIFICATIONS.length} proveedores`
+            : `${CERTIFICATIONS.reduce((a, c) => a + c.items.length, 0)} certifications across ${CERTIFICATIONS.length} providers`
+          }
         </p>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
           {CERTIFICATIONS.map((cert, i) => (
             <div key={cert.id}
               style={{
@@ -654,7 +697,7 @@ function Certifications() {
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16, color: "#fff" }}>{cert.provider}</div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{cert.items.length} certification{cert.items.length > 1 ? "s" : ""}</div>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{cert.items.length} {lang === 'es' ? `certificación${cert.items.length > 1 ? "es" : ""}` : `certification${cert.items.length > 1 ? "s" : ""}`}</div>
                   </div>
                   <div style={{ color: cert.color, fontSize: 16, transition: "transform 0.3s", transform: expanded === cert.id ? "rotate(45deg)" : "rotate(0)" }}>+</div>
                 </div>
@@ -667,7 +710,7 @@ function Certifications() {
                         padding: "14px 0", borderBottom: j < cert.items.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
                       }}>
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                          <span style={{ color: "#fff", fontSize: 13, fontFamily: "'Syne', sans-serif", fontWeight: 600, flex: 1 }}>{item.name}</span>
+                          <span style={{ color: "#fff", fontSize: 13, fontFamily: "'Syne', sans-serif", fontWeight: 600, flex: 1 }}>{item[`name_${lang}`]}</span>
                           {item.badge ? (
                             <img src={item.badge} alt={item.name} style={{ height: 32, borderRadius: 4, flexShrink: 0, marginLeft: 12 }} />
                           ) : (
@@ -675,7 +718,7 @@ function Certifications() {
                           )}
                         </div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                          {item.skills.map(s => (
+                          {item[`skills_${lang}`].map(s => (
                             <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'Space Mono', monospace" }}>{s}</span>
                           ))}
                         </div>
@@ -697,18 +740,19 @@ function Certifications() {
 // ============================================================
 
 function Projects() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.05);
   const [hovered, setHovered] = useState(null);
 
   return (
     <section id="projects" style={{ background: "#0c0a09", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="05 / PROJECTS" />
+        <SectionLabel label={lang === 'es' ? "05 / PROYECTOS" : "05 / PROJECTS"} />
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 60 }}>
-          Selected work
+          {lang === 'es' ? "Trabajos seleccionados" : "Selected work"}
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(520px, 1fr))", gap: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
           {PROJECTS.map((proj, i) => (
             <div key={proj.id}
               style={{
@@ -733,9 +777,9 @@ function Projects() {
               <div style={{ position: "relative", zIndex: 1 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                   <div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>PROJECT</div>
+                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>{lang === 'es' ? 'PROYECTO' : 'PROJECT'}</div>
                     <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{proj.name}</h3>
-                    <p style={{ color: proj.color, fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{proj.tagline}</p>
+                    <p style={{ color: proj.color, fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{proj[`tagline_${lang}`]}</p>
                   </div>
                   <div style={{
                     width: 44, height: 44, borderRadius: 10, background: proj.color + "20",
@@ -745,20 +789,46 @@ function Projects() {
                   }}>→</div>
                 </div>
 
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, fontFamily: "system-ui" }}>{proj.description}</p>
+                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, fontFamily: "system-ui" }}>{proj[`description_${lang}`]}</p>
 
                 {/* Highlights */}
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
-                  {proj.highlights.map(h => (
+                  {proj[`highlights_${lang}`].map(h => (
                     <span key={h} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", padding: "4px 12px", borderRadius: 6, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{h}</span>
                   ))}
                 </div>
 
                 {/* Stack */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
                   {proj.stack.map(s => (
                     <span key={s} style={{ background: proj.color + "15", color: proj.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{s}</span>
                   ))}
+                </div>
+
+                {/* Links */}
+                <div style={{ display: "flex", gap: 12 }}>
+                  <a href={proj.url} target="_blank" rel="noreferrer"
+                    style={{
+                      background: proj.color + "20", border: `1px solid ${proj.color}44`,
+                      color: proj.color, padding: "8px 16px", borderRadius: 8, fontSize: 12,
+                      fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+                    }}
+                    onMouseEnter={e => { e.target.style.background = proj.color; e.target.style.color = "#fff"; }}
+                    onMouseLeave={e => { e.target.style.background = proj.color + "20"; e.target.style.color = proj.color; }}
+                  >
+                    {lang === 'es' ? 'Ver Proyecto' : 'View Project'} ↗
+                  </a>
+                  <a href={proj.github} target="_blank" rel="noreferrer"
+                    style={{
+                      background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
+                      color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 8, fontSize: 12,
+                      fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+                    }}
+                    onMouseEnter={e => { e.target.style.borderColor = "#fff"; e.target.style.color = "#fff"; }}
+                    onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.1)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
               </div>
             </div>
@@ -774,21 +844,22 @@ function Projects() {
 // ============================================================
 
 function Skills() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.1);
-  const hardSkills = SKILLS.hard_skills;
-  const softSkills = SKILLS.soft_skills;
+  const hardSkills = SKILLS[lang].hard_skills;
+  const softSkills = SKILLS[lang].soft_skills;
 
   return (
     <section id="skills" style={{ background: "#1c1917", padding: "120px 5%" }}>
       <div ref={ref} style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <SectionLabel label="06 / SKILLS" />
+        <SectionLabel label={lang === 'es' ? "06 / HABILIDADES" : "06 / SKILLS"} />
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 60 }}>
-          Capabilities
+          {lang === 'es' ? "Capacidades" : "Capabilities"}
         </h2>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 60 }}>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-20px)", transition: "all 0.7s ease" }}>
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>Core Competencies</h3>
+            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Competencias Clave' : 'Core Competencies'}</h3>
             {hardSkills.map((s, i) => (
               <div key={s.name} style={{ marginBottom: 24, opacity: inView ? 1 : 0, transition: `opacity 0.5s ease ${0.2 + i * 0.1}s` }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
@@ -808,7 +879,7 @@ function Skills() {
           </div>
 
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(20px)", transition: "all 0.7s ease 0.2s" }}>
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#06b6d4", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>Soft Skills & Approach</h3>
+            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#06b6d4", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Habilidades Blandas y Enfoque' : 'Soft Skills & Approach'}</h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
               {softSkills.map((s, i) => (
                 <span key={s} style={{
@@ -824,8 +895,8 @@ function Skills() {
             </div>
 
             {/* Specialization areas */}
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#8b5cf6", letterSpacing: 3, marginBottom: 20, marginTop: 40, textTransform: "uppercase" }}>Specializations</h3>
-            {SKILLS.specializations.map((spec, i) => (
+            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#8b5cf6", letterSpacing: 3, marginBottom: 20, marginTop: 40, textTransform: "uppercase" }}>{lang === 'es' ? 'Especializaciones' : 'Specializations'}</h3>
+            {SKILLS[lang].specializations.map((spec, i) => (
               <div key={spec} style={{
                 display: "flex", alignItems: "center", gap: 12, padding: "10px 0",
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
@@ -847,11 +918,12 @@ function Skills() {
 // ============================================================
 
 function Contact() {
+  const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.1);
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText(PROFILE.email);
+    navigator.clipboard.writeText(PROFILE[lang].email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -861,20 +933,27 @@ function Contact() {
       <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
 
       <div ref={ref} style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
-        <SectionLabel label="07 / CONTACT" center />
+        <SectionLabel label={lang === 'es' ? "07 / CONTACTO" : "07 / CONTACT"} center />
         <h2 style={{
           fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif",
           lineHeight: 1.05, marginTop: 24, marginBottom: 20,
           opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease",
         }}>
-          Let's build<br /><span style={{ color: "#f97316" }}>something</span><br />great together.
+          {lang === 'es' ? (
+            <>Vamos a construir<br /><span style={{ color: "#f97316" }}>algo</span><br />grande juntos.</>
+          ) : (
+            <>Let's build<br /><span style={{ color: "#f97316" }}>something</span><br />great together.</>
+          )}
         </h2>
         <p style={{
           color: "rgba(255,255,255,0.45)", fontSize: 16, lineHeight: 1.7, maxWidth: 480, margin: "0 auto 48px",
           fontFamily: "system-ui",
           opacity: inView ? 1 : 0, transition: "opacity 0.7s ease 0.2s",
         }}>
-          Available for senior engineering roles, technical consulting, and AI product development. Let's connect.
+          {lang === 'es' 
+            ? "Disponible para roles de ingeniería senior, consultoría técnica y desarrollo de productos de IA. Conectemos."
+            : "Available for senior engineering roles, technical consulting, and AI product development. Let's connect."
+          }
         </p>
 
         {/* Email */}
@@ -888,8 +967,8 @@ function Contact() {
           onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
         >
           <span style={{ color: "#f97316", fontSize: 16 }}>✉</span>
-          <span style={{ color: "#fff", fontFamily: "'Space Mono', monospace", fontSize: 14 }}>{PROFILE.email}</span>
-          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{copied ? "COPIED!" : "CLICK TO COPY"}</span>
+          <span style={{ color: "#fff", fontFamily: "'Space Mono', monospace", fontSize: 14 }}>{PROFILE[lang].email}</span>
+          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{copied ? (lang === 'es' ? "¡COPIADO!" : "COPIED!") : (lang === 'es' ? "CLIC PARA COPIAR" : "CLICK TO COPY")}</span>
         </div>
 
         {/* Social links */}
@@ -897,7 +976,7 @@ function Contact() {
           display: "flex", gap: 16, justifyContent: "center",
           opacity: inView ? 1 : 0, transition: "opacity 0.7s ease 0.4s",
         }}>
-          {[["GitHub", PROFILE.github, "#fff"], ["LinkedIn", PROFILE.linkedin, "#0A66C2"]].map(([name, url, color]) => (
+          {[["GitHub", PROFILE[lang].github, "#fff"], ["LinkedIn", PROFILE[lang].linkedin, "#0A66C2"]].map(([name, url, color]) => (
             <a key={name} href={url} target="_blank" rel="noreferrer"
               style={{
                 background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
@@ -919,14 +998,15 @@ function Contact() {
 // ============================================================
 
 function Footer() {
+  const { lang } = useContext(LangContext);
   return (
     <footer style={{ background: "#03030a", padding: "32px 5%", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.2)" }}>
-          © 2025 {PROFILE.name} · Built with Next.js & Framer Motion
+          © 2025 {PROFILE[lang].name} · {lang === 'es' ? 'Construido con' : 'Built with'} Next.js & Framer Motion
         </span>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.15)" }}>
-          DESIGNED & ENGINEERED WITH PRECISION
+          {lang === 'es' ? 'DISEÑADO E INGENIADO CON PRECISIÓN' : 'DESIGNED & ENGINEERED WITH PRECISION'}
         </span>
       </div>
     </footer>
@@ -969,6 +1049,13 @@ export default function Portfolio() {
         @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-8px) } }
         button { outline: none; }
         a { outline: none; }
+        @media (max-width: 768px) {
+          .desktop-only { display: none !important; }
+          .nav-links { display: none !important; }
+        }
+        @media (min-width: 769px) {
+          .mobile-only { display: none !important; }
+        }
       `}</style>
       <Nav scrollY={scrollY} />
       <Hero />

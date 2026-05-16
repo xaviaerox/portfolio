@@ -2,44 +2,72 @@
   {
     "id": "proj-1",
     "name": "Queryclin",
-    "tagline": "HCE Intelligence Dashboard",
-    "description": "Plataforma de exploración y análisis de Historias Clínicas Electrónicas con privacidad absoluta (Local-First). Motor de búsqueda basado en Okapi BM25 capaz de procesar hasta 100.000 pacientes en milisegundos en el navegador.",
+    "tagline_es": "HCE Intelligence Dashboard",
+    "tagline_en": "HCE Intelligence Dashboard",
+    "description_es": "Plataforma de exploración y análisis de Historias Clínicas Electrónicas con privacidad absoluta (Local-First). Motor de búsqueda basado en Okapi BM25 capaz de procesar hasta 100.000 pacientes en milisegundos en el navegador.",
+    "description_en": "Platform for exploration and analysis of Electronic Health Records with absolute privacy (Local-First). Search engine based on Okapi BM25 capable of processing up to 100,000 patients in milliseconds in the browser.",
     "stack": ["React 19", "TypeScript", "IndexedDB", "Web Workers", "BM25"],
-    "highlights": [
+    "highlights_es": [
       "Privacidad Local-First absoluta.",
       "Procesamiento de 100k+ registros en RAM.",
       "Motor de búsqueda clínico avanzado.",
       "\"Tu trabajo de ingeniería de datos me llamó la atención...\" — Denis, Software Engineer"
     ],
+    "highlights_en": [
+      "Absolute Local-First privacy.",
+      "Processing of 100k+ records in RAM.",
+      "Advanced clinical search engine.",
+      "\"Your data engineering work caught my eye...\" — Denis, Software Engineer"
+    ],
     "color": "#06b6d4",
-    "gradient": "from-cyan-500/20 to-blue-500/10"
+    "gradient": "from-cyan-500/20 to-blue-500/10",
+    "url": "https://queryclin.com",
+    "github": "https://github.com/xaviaerox/queryclin"
   },
   {
     "id": "proj-2",
     "name": "StockFlow",
-    "tagline": "PWA para Dolibarr ERP",
-    "description": "Aplicación web progresiva diseñada para optimizar la gestión de almacén, trazabilidad y facturación. Conexión directa y desacoplada con la API REST de Dolibarr ERP sin servidores intermediarios.",
+    "tagline_es": "PWA para Dolibarr ERP",
+    "tagline_en": "PWA for Dolibarr ERP",
+    "description_es": "Aplicación web progresiva diseñada para optimizar la gestión de almacén, trazabilidad y facturación. Conexión directa y desacoplada con la API REST de Dolibarr ERP sin servidores intermediarios.",
+    "description_en": "Progressive web application designed to optimize warehouse management, traceability, and billing. Direct and decoupled connection with the Dolibarr ERP REST API without intermediary servers.",
     "stack": ["Vanilla JS", "CSS Glassmorphism", "PWA", "Dolibarr API", "QR Scanner"],
-    "highlights": [
+    "highlights_es": [
       "Escáner de cámara integrado.",
       "Arquitectura 100% Stateless.",
       "Control de trazabilidad por nº de serie."
     ],
+    "highlights_en": [
+      "Integrated camera scanner.",
+      "100% Stateless architecture.",
+      "Traceability control by serial number."
+    ],
     "color": "#f97316",
-    "gradient": "from-indigo-500/20 to-purple-500/10"
+    "gradient": "from-indigo-500/20 to-purple-500/10",
+    "url": "#",
+    "github": "https://github.com/xaviaerox/stockflow"
   },
   {
     "id": "proj-3",
     "name": "Solutech",
-    "tagline": "Consultoría IT & Arquitectura",
-    "description": "El proyecto global de marca donde diseño e implemento sistemas de alta disponibilidad, planes de contingencia y blindaje de redes para empresas, aplicando una filosofía de arquitectura silenciosa.",
+    "tagline_es": "Consultoría IT & Arquitectura",
+    "tagline_en": "IT Consulting & Architecture",
+    "description_es": "El proyecto global de marca donde diseño e implemento sistemas de alta disponibilidad, planes de contingencia y blindaje de redes para empresas, aplicando una filosofía de arquitectura silenciosa.",
+    "description_en": "The global brand project where I design and implement high availability systems, contingency plans, and network hardening for companies, applying a silent architecture philosophy.",
     "stack": ["Proxmox", "VLANs", "Firewalls", "Regla 3-2-1", "Continuidad"],
-    "highlights": [
+    "highlights_es": [
       "Diseño de sistemas redundantes.",
       "Planes de contingencia inmutables.",
       "Seguridad por diseño (Zero Trust)."
     ],
+    "highlights_en": [
+      "Design of redundant systems.",
+      "Immutable contingency plans.",
+      "Security by design (Zero Trust)."
+    ],
     "color": "#8b5cf6",
-    "gradient": "from-violet-500/20 to-purple-500/10"
+    "gradient": "from-violet-500/20 to-purple-500/10",
+    "url": "https://solutech.es",
+    "github": "https://github.com/xaviaerox/solutech"
   }
 ]

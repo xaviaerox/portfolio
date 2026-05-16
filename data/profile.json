@@ -1,12 +1,26 @@
 {
-  "name": "Xavi Alonso",
-  "role": "Operador IT & Arquitecto de Infraestructura",
-  "tagline": "Diseño sistemas que no fallan. Automatizo lo complejo. Protejo tu operativa.",
-  "bio": "Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Como Arquitecto IT y desarrollador, combino la administración de sistemas con la creación de software a medida. He diseñado soluciones potentes como Queryclin (un dashboard inteligente para historias clínicas con privacidad local-first) y StockFlow (una PWA para gestión de stocks sobre Dolibarr), además de liderar Solutech para ofrecer consultoría de alta disponibilidad.",
-  "location": "Almería · Murcia · Remoto",
-  "email": "xaviaerox@gmail.com",
-  "github": "https://github.com/xaviaerox",
-  "linkedin": "https://linkedin.com/in/xavialonso",
-  "philosophy": "La mejor tecnología es la que no se nota. Arquitectura de continuidad, seguridad por diseño y automatización extrema.",
-  "skills_summary": "Infraestructura, Seguridad, Desarrollo Web, Automatización, IA"
+  "es": {
+    "name": "Xavi Alonso",
+    "role": "Operador IT & Arquitecto de Infraestructura",
+    "tagline": "Diseño sistemas que no fallan. Automatizo lo complejo. Protejo tu operativa.",
+    "bio": "Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Como Arquitecto IT y desarrollador, combino la administración de sistemas con la creación de software a medida. He diseñado soluciones potentes como Queryclin (un dashboard inteligente para historias clínicas con privacidad local-first) y StockFlow (una PWA para gestión de stocks sobre Dolibarr), además de liderar Solutech para ofrecer consultoría de alta disponibilidad.",
+    "location": "Almería · Murcia · Remoto",
+    "email": "xaviaerox@gmail.com",
+    "github": "https://github.com/xaviaerox",
+    "linkedin": "https://www.linkedin.com/in/xaviaerox",
+    "philosophy": "La mejor tecnología es la que no se nota. Arquitectura de continuidad, seguridad por diseño y automatización extrema.",
+    "skills_summary": "Infraestructura, Seguridad, Desarrollo Web, Automatización, IA"
+  },
+  "en": {
+    "name": "Xavi Alonso",
+    "role": "IT Operator & Infrastructure Architect",
+    "tagline": "I design systems that don't fail. I automate the complex. I protect your operations.",
+    "bio": "Specialist in critical infrastructure and operational security with over 12 years of experience. As an IT Architect and developer, I combine systems administration with custom software creation. I have designed powerful solutions like Queryclin (an intelligent dashboard for clinical records with local-first privacy) and StockFlow (a PWA for stock management on Dolibarr), in addition to leading Solutech to offer high availability consulting.",
+    "location": "Almería · Murcia · Remote",
+    "email": "xaviaerox@gmail.com",
+    "github": "https://github.com/xaviaerox",
+    "linkedin": "https://www.linkedin.com/in/xaviaerox",
+    "philosophy": "The best technology is the one you don't notice. Continuity architecture, security by design, and extreme automation.",
+    "skills_summary": "Infrastructure, Security, Web Development, Automation, AI"
+  }
 }

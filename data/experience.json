@@ -2,45 +2,66 @@
   {
     "id": "exp-1",
     "company": "Solutech",
-    "role": "Fundador & Arquitecto de Infraestructura",
+    "role_es": "Fundador & Arquitecto de Infraestructura",
+    "role_en": "Founder & Infrastructure Architect",
     "period": "2024 – Presente",
     "location": "Almería · Murcia · Remoto",
-    "description": "Lidero la transformación digital y la gestión de infraestructuras críticas para pequeñas y medianas empresas. Diseño sistemas resilientes, automatizo procesos y garantizo la continuidad del negocio.",
+    "description_es": "Lidero la transformación digital y la gestión de infraestructuras críticas para pequeñas y medianas empresas. Diseño sistemas resilientes, automatizo procesos y garantizo la continuidad del negocio.",
+    "description_en": "I lead digital transformation and critical infrastructure management for small and medium-sized businesses. I design resilient systems, automate processes, and guarantee business continuity.",
     "stack": ["Proxmox", "VLANs", "Firewalls", "Backups Inmutables", "Wiki.js", "Docker"],
-    "achievements": [
+    "achievements_es": [
       "Diseño e implementación de clústeres de virtualización con Proxmox reduciendo costes de hardware en un 60%.",
       "Estrategias de backup 3-2-1 con recuperación garantizada en menos de 2 horas.",
       "Blindaje de redes y cumplimiento normativo RGPD para clientes del sector legal y salud."
+    ],
+    "achievements_en": [
+      "Design and implementation of virtualization clusters with Proxmox, reducing hardware costs by 60%.",
+      "3-2-1 backup strategies with guaranteed recovery in less than 2 hours.",
+      "Network hardening and GDPR compliance for clients in the legal and healthcare sectors."
     ],
     "color": "#f97316"
   },
   {
     "id": "exp-2",
     "company": "Consultor IT Independiente",
-    "role": "Especialista en Infraestructura y Seguridad",
+    "role_es": "Especialista en Infraestructura y Seguridad",
+    "role_en": "Infrastructure and Security Specialist",
     "period": "2018 – 2024",
     "location": "Remoto",
-    "description": "Asesoramiento y ejecución de proyectos de infraestructura para diversas empresas. Especializado en virtualización, seguridad perimetral y planes de recuperación ante desastres.",
+    "description_es": "Asesoramiento y ejecución de proyectos de infraestructura para diversas empresas. Especializado en virtualización, seguridad perimetral y planes de recuperación ante desastres.",
+    "description_en": "Consulting and execution of infrastructure projects for various companies. Specialized in virtualization, perimeter security, and disaster recovery plans.",
     "stack": ["VMware", "pfSense", "Veeam", "Linux", "Windows Server", "MikroTik"],
-    "achievements": [
+    "achievements_es": [
       "Migración de entornos físicos a virtuales para más de 20 clientes.",
       "Implementación de sistemas de monitorización activa reduciendo incidencias en un 40%.",
       "Auditorías de seguridad y securización de entornos corporativos."
+    ],
+    "achievements_en": [
+      "Migration of physical to virtual environments for over 20 clients.",
+      "Implementation of active monitoring systems, reducing incidents by 40%.",
+      "Security audits and hardening of corporate environments."
     ],
     "color": "#06b6d4"
   },
   {
     "id": "exp-3",
     "company": "Técnico de Sistemas / Administrador",
-    "role": "Administrador de Sistemas Junior a Senior",
+    "role_es": "Administrador de Sistemas Junior a Senior",
+    "role_en": "Junior to Senior Systems Administrator",
     "period": "2012 – 2018",
     "location": "Presencial",
-    "description": "Gestión de parques informáticos, servidores y redes. Soporte avanzado y resolución de problemas complejos.",
+    "description_es": "Gestión de parques informáticos, servidores y redes. Soporte avanzado y resolución de problemas complejos.",
+    "description_en": "Management of IT parks, servers, and networks. Advanced support and resolution of complex problems.",
     "stack": ["Windows Server", "Active Directory", "Cisco", "Linux", "Scripting", "Hardware"],
-    "achievements": [
+    "achievements_es": [
       "Gestión integral de infraestructuras de servidores y redes.",
       "Automatización de tareas repetitivas mediante scripting.",
       "Liderazgo en la resolución de incidencias críticas."
+    ],
+    "achievements_en": [
+      "Integral management of server and network infrastructures.",
+      "Automation of repetitive tasks through scripting.",
+      "Leadership in the resolution of critical incidents."
     ],
     "color": "#8b5cf6"
   }
