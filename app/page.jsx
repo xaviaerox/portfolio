@@ -5,6 +5,9 @@
 // Ready to migrate to Next.js + Framer Motion
 
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Lenis from "lenis";
+import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Menu, X, Check, Globe } from "lucide-react";
 
 const LangContext = createContext();
 
@@ -225,20 +228,29 @@ function Nav({ scrollY }) {
         </div>
       </div>
       {/* Mobile Menu */}
-      {open && (
-        <div className="mobile-only" style={{
-          position: "fixed", top: 68, left: 0, right: 0, bottom: 0,
-          background: "rgba(5,5,15,0.95)", backdropFilter: "blur(20px)",
-          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-          gap: 32, zIndex: 99,
-        }}>
-          {links.map(l => (
-            <button key={l.id} onClick={() => scrollTo(l.id)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 18, fontFamily: "'Space Mono', monospace" }}
-            >{l.label}</button>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="mobile-only"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: "fixed", top: 68, left: 0, right: 0, bottom: 0,
+              background: "rgba(5,5,15,0.95)", backdropFilter: "blur(20px)",
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              gap: 32, zIndex: 99,
+            }}
+          >
+            {links.map(l => (
+              <button key={l.id} onClick={() => scrollTo(l.id)}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 18, fontFamily: "'Space Mono', monospace" }}
+              >{l.label}</button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
@@ -250,16 +262,34 @@ function Nav({ scrollY }) {
 function Hero() {
   const { lang } = useContext(LangContext);
   const [mounted, setMounted] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [tagline] = useTypewriter(PROFILE[lang].tagline, 45, 1200);
+
   useEffect(() => { setTimeout(() => setMounted(true), 100); }, []);
 
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: "#0c0a09" }}>
+    <section id="hero" onMouseMove={handleMouseMove} style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden", background: "#0c0a09" }}>
       <ParticleField count={70} />
 
       {/* Ambient glow */}
-      <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translateX(-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
-      <div style={{ position: "absolute", bottom: "10%", right: "15%", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
+      <div style={{ 
+        position: "absolute", top: "20%", left: "50%", 
+        transform: `translate(calc(-50% + ${(mousePos.x - 500) * 0.05}px), ${(mousePos.y - 300) * 0.05}px)`, 
+        width: 600, height: 600, borderRadius: "50%", 
+        background: "radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%)", 
+        pointerEvents: "none", transition: "transform 0.1s ease" 
+      }} />
+      <div style={{ 
+        position: "absolute", bottom: "10%", right: "15%", 
+        transform: `translate(${(mousePos.x - 500) * 0.03}px, ${(mousePos.y - 300) * 0.03}px)`, 
+        width: 300, height: 300, borderRadius: "50%", 
+        background: "radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%)", 
+        pointerEvents: "none", transition: "transform 0.1s ease" 
+      }} />
 
       {/* Grid overlay */}
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
@@ -500,8 +530,18 @@ function TechStack() {
                 transition: `all 0.5s ease ${i * 0.04}s`,
                 cursor: "default", position: "relative", overflow: "hidden",
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = tech.color + "44"; e.currentTarget.style.background = tech.color + "11"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; e.currentTarget.style.background = "rgba(255,255,255,0.02)"; }}
+              onMouseEnter={e => { 
+                e.currentTarget.style.borderColor = tech.color + "44"; 
+                e.currentTarget.style.background = tech.color + "11"; 
+                e.currentTarget.style.transform = "translateY(-5px)";
+                e.currentTarget.style.boxShadow = `0 10px 20px -10px ${tech.color}33`;
+              }}
+              onMouseLeave={e => { 
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)"; 
+                e.currentTarget.style.background = "rgba(255,255,255,0.02)"; 
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                 <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Syne', sans-serif" }}>{tech.name}</span>
@@ -739,10 +779,117 @@ function Certifications() {
 // PROJECTS
 // ============================================================
 
+function ProjectCard({ proj, i, lang, inView }) {
+  const [hovered, setHovered] = useState(false);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
+    setRotate({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+    setRotate({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div
+        style={{
+          background: hovered ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
+          border: `1px solid ${hovered ? proj.color + "44" : "rgba(255,255,255,0.07)"}`,
+          borderRadius: 20, padding: 32, cursor: "pointer",
+          transition: "background 0.3s, border 0.3s, transform 0.1s ease",
+          transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+          position: "relative", overflow: "hidden",
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Glow bg */}
+        <div style={{
+          position: "absolute", top: -60, right: -60, width: 180, height: 180,
+          borderRadius: "50%", background: `radial-gradient(circle, ${proj.color}18 0%, transparent 70%)`,
+          pointerEvents: "none", opacity: hovered ? 1 : 0, transition: "opacity 0.4s",
+        }} />
+
+        <div style={{ position: "relative", zIndex: 1 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+            <div>
+              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>{lang === 'es' ? 'PROYECTO' : 'PROJECT'}</div>
+              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{proj.name}</h3>
+              <p style={{ color: proj.color, fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{proj[`tagline_${lang}`]}</p>
+            </div>
+            <div style={{
+              width: 44, height: 44, borderRadius: 10, background: proj.color + "20",
+              border: `1px solid ${proj.color}33`, display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 18, color: proj.color, transition: "transform 0.3s",
+              transform: hovered ? "rotate(-8deg)" : "rotate(0)",
+            }}>→</div>
+          </div>
+
+          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, fontFamily: "system-ui" }}>{proj[`description_${lang}`]}</p>
+
+          {/* Highlights */}
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
+            {proj[`highlights_${lang}`].map(h => (
+              <span key={h} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", padding: "4px 12px", borderRadius: 6, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{h}</span>
+            ))}
+          </div>
+
+          {/* Stack */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
+            {proj.stack.map(s => (
+              <span key={s} style={{ background: proj.color + "15", color: proj.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{s}</span>
+            ))}
+          </div>
+
+          {/* Links */}
+          <div style={{ display: "flex", gap: 12 }}>
+            <a href={proj.url} target="_blank" rel="noreferrer"
+              style={{
+                background: proj.color + "20", border: `1px solid ${proj.color}44`,
+                color: proj.color, padding: "8px 16px", borderRadius: 8, fontSize: 12,
+                fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { e.target.style.background = proj.color; e.target.style.color = "#fff"; }}
+              onMouseLeave={e => { e.target.style.background = proj.color + "20"; e.target.style.color = proj.color; }}
+            >
+              {lang === 'es' ? 'Ver Proyecto' : 'View Project'} ↗
+            </a>
+            <a href={proj.github} target="_blank" rel="noreferrer"
+              style={{
+                background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
+                color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 8, fontSize: 12,
+                fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { e.target.style.borderColor = "#fff"; e.target.style.color = "#fff"; }}
+              onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.1)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}
+            >
+              GitHub ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+}
+
 function Projects() {
   const { lang } = useContext(LangContext);
   const [ref, inView] = useInView(0.05);
-  const [hovered, setHovered] = useState(null);
 
   return (
     <section id="projects" style={{ background: "#0c0a09", padding: "120px 5%" }}>
@@ -754,88 +901,13 @@ function Projects() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
           {PROJECTS.map((proj, i) => (
-            <div key={proj.id}
-              style={{
-                background: hovered === proj.id ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
-                border: `1px solid ${hovered === proj.id ? proj.color + "44" : "rgba(255,255,255,0.07)"}`,
-                borderRadius: 20, padding: 32, cursor: "pointer",
-                transition: "all 0.35s ease",
-                opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)",
-                transitionDelay: `${i * 0.1}s`,
-                position: "relative", overflow: "hidden",
-              }}
-              onMouseEnter={() => setHovered(proj.id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              {/* Glow bg */}
-              <div style={{
-                position: "absolute", top: -60, right: -60, width: 180, height: 180,
-                borderRadius: "50%", background: `radial-gradient(circle, ${proj.color}18 0%, transparent 70%)`,
-                pointerEvents: "none", opacity: hovered === proj.id ? 1 : 0, transition: "opacity 0.4s",
-              }} />
-
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-                  <div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>{lang === 'es' ? 'PROYECTO' : 'PROJECT'}</div>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{proj.name}</h3>
-                    <p style={{ color: proj.color, fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{proj[`tagline_${lang}`]}</p>
-                  </div>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: 10, background: proj.color + "20",
-                    border: `1px solid ${proj.color}33`, display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 18, color: proj.color, transition: "transform 0.3s",
-                    transform: hovered === proj.id ? "rotate(-8deg)" : "rotate(0)",
-                  }}>→</div>
-                </div>
-
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, fontFamily: "system-ui" }}>{proj[`description_${lang}`]}</p>
-
-                {/* Highlights */}
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
-                  {proj[`highlights_${lang}`].map(h => (
-                    <span key={h} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", padding: "4px 12px", borderRadius: 6, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{h}</span>
-                  ))}
-                </div>
-
-                {/* Stack */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
-                  {proj.stack.map(s => (
-                    <span key={s} style={{ background: proj.color + "15", color: proj.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{s}</span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div style={{ display: "flex", gap: 12 }}>
-                  <a href={proj.url} target="_blank" rel="noreferrer"
-                    style={{
-                      background: proj.color + "20", border: `1px solid ${proj.color}44`,
-                      color: proj.color, padding: "8px 16px", borderRadius: 8, fontSize: 12,
-                      fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
-                    }}
-                    onMouseEnter={e => { e.target.style.background = proj.color; e.target.style.color = "#fff"; }}
-                    onMouseLeave={e => { e.target.style.background = proj.color + "20"; e.target.style.color = proj.color; }}
-                  >
-                    {lang === 'es' ? 'Ver Proyecto' : 'View Project'} ↗
-                  </a>
-                  <a href={proj.github} target="_blank" rel="noreferrer"
-                    style={{
-                      background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
-                      color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 8, fontSize: 12,
-                      fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
-                    }}
-                    onMouseEnter={e => { e.target.style.borderColor = "#fff"; e.target.style.color = "#fff"; }}
-                    onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.1)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}
-                  >
-                    GitHub ↗
-                  </a>
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={proj.id} proj={proj} i={i} lang={lang} inView={inView} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
   );
 }
 
@@ -1033,6 +1105,18 @@ function SectionLabel({ label, center = false }) {
 export default function Portfolio() {
   const scrollY = useScrollY();
   const [lang, setLang] = useState('es');
+
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   return (
     <LangContext.Provider value={{ lang, setLang }}>
