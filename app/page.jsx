@@ -885,6 +885,7 @@ function ProjectCard({ proj, i, lang, inView }) {
         </div>
       </div>
     </motion.div>
+  );
 }
 
 function Projects() {
@@ -906,8 +907,6 @@ function Projects() {
         </div>
       </div>
     </section>
-  );
-}
   );
 }
 
