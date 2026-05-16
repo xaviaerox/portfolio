@@ -10,19 +10,17 @@
     "highlights_es": [
       "Privacidad Local-First absoluta.",
       "Procesamiento de 100k+ registros en RAM.",
-      "Motor de búsqueda clínico avanzado.",
-      "\"Tu trabajo de ingeniería de datos me llamó la atención...\" — Denis, Software Engineer"
+      "Motor de búsqueda clínico avanzado."
     ],
     "highlights_en": [
       "Absolute Local-First privacy.",
       "Processing of 100k+ records in RAM.",
-      "Advanced clinical search engine.",
-      "\"Your data engineering work caught my eye...\" — Denis, Software Engineer"
+      "Advanced clinical search engine."
     ],
     "color": "#06b6d4",
     "gradient": "from-cyan-500/20 to-blue-500/10",
-    "url": "https://queryclin.com",
-    "github": "https://github.com/xaviaerox/queryclin"
+    "url": "https://xaviaerox.github.io/Queryclin/",
+    "github": "https://github.com/xaviaerox/Queryclin"
   },
   {
     "id": "proj-2",
@@ -67,7 +65,30 @@
     ],
     "color": "#8b5cf6",
     "gradient": "from-violet-500/20 to-purple-500/10",
-    "url": "https://solutech.es",
+    "url": "https://solutech.shop",
+    "github": "https://github.com/xaviaerox/solutech"
+  },
+  {
+    "id": "proj-4",
+    "name": "Solutech Blog",
+    "tagline_es": "Blog de Tecnología y Sistemas",
+    "tagline_en": "Tech & Systems Blog",
+    "description_es": "Espacio donde comparto artículos sobre administración de sistemas, ciberseguridad y automatización. Construido como un proyecto estático para máxima velocidad.",
+    "description_en": "Space where I share articles on systems administration, cybersecurity, and automation. Built as a static project for maximum speed.",
+    "stack": ["Hugo", "Markdown", "Git", "Static Web"],
+    "highlights_es": [
+      "Contenido técnico especializado.",
+      "Rendimiento web extremo.",
+      "Diseño minimalista."
+    ],
+    "highlights_en": [
+      "Specialized technical content.",
+      "Extreme web performance.",
+      "Minimalist design."
+    ],
+    "color": "#10b981",
+    "gradient": "from-emerald-500/20 to-teal-500/10",
+    "url": "https://solutech.shop/blog",
     "github": "https://github.com/xaviaerox/solutech"
   }
 ]

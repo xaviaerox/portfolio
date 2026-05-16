@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
-import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Menu, X, Check, Globe } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Menu, X, Check, Globe, Zap, Bot, Wrench, Rocket, Layers, RefreshCw } from "lucide-react";
 
 const LangContext = createContext();
 
@@ -173,13 +173,13 @@ function Nav({ scrollY }) {
       padding: "0 5%",
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 16, fontWeight: 700, color: "#f97316", letterSpacing: 2 }}>
-          XA<span style={{ color: "rgba(249,115,22,0.4)" }}>_</span>
+        <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 800, color: "#fff", letterSpacing: 1 }}>
+          XAVI<span style={{ color: "#f97316" }}> ALONSO</span>
         </span>
         <div className="nav-links" style={{ display: "flex", gap: 36 }}>
           {links.map(l => (
             <button key={l.id} onClick={() => scrollTo(l.id)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.55)", fontSize: 13, fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "color 0.2s", padding: "4px 0" }}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.55)", fontSize: 13, fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, transition: "color 0.2s", padding: "4px 0" }}
               onMouseEnter={e => e.target.style.color = "#fff"}
               onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.55)"}
             >{l.label}</button>
@@ -188,7 +188,7 @@ function Nav({ scrollY }) {
         
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {/* Language Switcher */}
-          <div style={{ display: "flex", gap: 8, fontFamily: "'Space Mono', monospace", fontSize: 13 }}>
+          <div style={{ display: "flex", gap: 8, fontFamily: "'JetBrains Mono', monospace", fontSize: 13 }}>
             <button 
               onClick={() => setLang('es')}
               style={{ background: "none", border: "none", cursor: "pointer", color: lang === 'es' ? "#f97316" : "rgba(255,255,255,0.3)", fontWeight: lang === 'es' ? 700 : 400, transition: "color 0.2s" }}
@@ -211,7 +211,7 @@ function Nav({ scrollY }) {
             style={{
               background: "transparent", border: "1px solid rgba(249,115,22,0.5)", color: "#f97316",
               padding: "8px 20px", borderRadius: 6, cursor: "pointer", fontSize: 12,
-              fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
+              fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
             }}
             onMouseEnter={e => { e.target.style.background = "rgba(249,115,22,0.15)"; e.target.style.borderColor = "#f97316"; }}
             onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(249,115,22,0.5)"; }}
@@ -245,7 +245,7 @@ function Nav({ scrollY }) {
           >
             {links.map(l => (
               <button key={l.id} onClick={() => scrollTo(l.id)}
-                style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 18, fontFamily: "'Space Mono', monospace" }}
+                style={{ background: "none", border: "none", cursor: "pointer", color: "#fff", fontSize: 18, fontFamily: "'JetBrains Mono', monospace" }}
               >{l.label}</button>
             ))}
           </motion.div>
@@ -304,7 +304,7 @@ function Hero() {
           transition: "all 0.6s ease 0.1s",
         }}>
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#10b981", boxShadow: "0 0 8px #10b981", display: "inline-block" }} />
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>{lang === 'es' ? 'DISPONIBLE PARA OPORTUNIDADES' : 'AVAILABLE FOR OPPORTUNITIES'}</span>
+          <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>{lang === 'es' ? 'DISPONIBLE PARA OPORTUNIDADES' : 'AVAILABLE FOR OPPORTUNITIES'}</span>
         </div>
 
         {/* Name and Photo */}
@@ -343,7 +343,7 @@ function Hero() {
 
         {/* Role */}
         <div style={{
-          fontSize: "clamp(14px, 2vw, 18px)", color: "#f97316", fontFamily: "'Space Mono', monospace",
+          fontSize: "clamp(14px, 2vw, 18px)", color: "#f97316", fontFamily: "'JetBrains Mono', monospace",
           letterSpacing: 3, marginBottom: 24, textTransform: "uppercase",
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(20px)",
           transition: "all 0.7s ease 0.4s",
@@ -352,7 +352,7 @@ function Hero() {
         </div>
 
         {/* Tagline */}
-        <p style={{
+        <p suppressHydrationWarning style={{
           fontSize: "clamp(18px, 2.5vw, 26px)", color: "rgba(255,255,255,0.65)", maxWidth: 580,
           fontFamily: "'Syne', sans-serif", fontWeight: 400, lineHeight: 1.5, marginBottom: 48,
           opacity: mounted ? 1 : 0, transition: "opacity 0.6s ease 0.6s",
@@ -371,7 +371,7 @@ function Hero() {
             onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
             style={{
               background: "#f97316", color: "#fff", border: "none", padding: "14px 32px",
-              borderRadius: 8, cursor: "pointer", fontSize: 14, fontFamily: "'Space Mono', monospace",
+              borderRadius: 8, cursor: "pointer", fontSize: 14, fontFamily: "'JetBrains Mono', monospace",
               letterSpacing: 1, transition: "all 0.2s", boxShadow: "0 0 40px rgba(249,115,22,0.3)",
             }}
             onMouseEnter={e => { e.target.style.transform = "translateY(-2px)"; e.target.style.boxShadow = "0 8px 50px rgba(249,115,22,0.5)"; }}
@@ -382,7 +382,7 @@ function Hero() {
             style={{
               background: "transparent", color: "rgba(255,255,255,0.75)", border: "1px solid rgba(255,255,255,0.15)",
               padding: "14px 32px", borderRadius: 8, cursor: "pointer", fontSize: 14,
-              fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
+              fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
             }}
             onMouseEnter={e => { e.target.style.borderColor = "rgba(255,255,255,0.4)"; e.target.style.color = "#fff"; }}
             onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.15)"; e.target.style.color = "rgba(255,255,255,0.75)"; }}
@@ -402,7 +402,7 @@ function Hero() {
           ).map(([n, l]) => (
             <div key={l} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 32, fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", lineHeight: 1 }}>{n}</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", fontFamily: "'Space Mono', monospace", letterSpacing: 1, marginTop: 6 }}>{l}</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, marginTop: 6 }}>{l}</div>
             </div>
           ))}
         </div>
@@ -410,7 +410,7 @@ function Hero() {
 
       {/* Scroll indicator */}
       <div style={{ position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, opacity: 0.4 }}>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: "#fff", letterSpacing: 2 }}>SCROLL</span>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#fff", letterSpacing: 2 }}>SCROLL</span>
         <div style={{ width: 1, height: 40, background: "linear-gradient(to bottom, rgba(255,255,255,0.5), transparent)", animation: "scrollPulse 2s infinite" }} />
       </div>
     </section>
@@ -426,20 +426,20 @@ function About() {
   const [ref, inView] = useInView(0.1);
   const traits = lang === 'es'
     ? [
-        { icon: "⚡", label: "Pensador Sistémico", desc: "Ver la arquitectura de forma holística" },
-        { icon: "🤖", label: "Ingeniero de IA", desc: "LLMs, RAG, pipelines de IA" },
-        { icon: "🔬", label: "Solucionador de Problemas", desc: "Depurar cualquier cosa, en cualquier lugar" },
-        { icon: "🚀", label: "Aprendizaje Rápido", desc: "Nueva tecnología en días, no semanas" },
-        { icon: "🏗️", label: "Arquitecto", desc: "Sistemas escalables y limpios" },
-        { icon: "🔄", label: "Automatizador", desc: "Eliminar la repetición a escala" },
+        { icon: <Zap size={20} color="#f97316" />, label: "Pensador Sistémico", desc: "Ver la arquitectura de forma holística" },
+        { icon: <Bot size={20} color="#f97316" />, label: "Especialista en IA", desc: "LLMs, RAG, pipelines de IA" },
+        { icon: <Wrench size={20} color="#f97316" />, label: "Solucionador de Problemas", desc: "Depurar cualquier cosa, en cualquier lugar" },
+        { icon: <Rocket size={20} color="#f97316" />, label: "Aprendizaje Rápido", desc: "Nueva tecnología en días, no semanas" },
+        { icon: <Layers size={20} color="#f97316" />, label: "Arquitecto", desc: "Sistemas escalables y limpios" },
+        { icon: <RefreshCw size={20} color="#f97316" />, label: "Automatizador", desc: "Eliminar la repetición a escala" },
       ]
     : [
-        { icon: "⚡", label: "Systems Thinker", desc: "See architecture holistically" },
-        { icon: "🤖", label: "AI Engineer", desc: "LLMs, RAG, AI pipelines" },
-        { icon: "🔬", label: "Problem Solver", desc: "Debug anything, anywhere" },
-        { icon: "🚀", label: "Fast Learner", desc: "New tech in days, not weeks" },
-        { icon: "🏗️", label: "Architect", desc: "Scalable, clean systems" },
-        { icon: "🔄", label: "Automator", desc: "Eliminate repetition at scale" },
+        { icon: <Zap size={20} color="#f97316" />, label: "Systems Thinker", desc: "See architecture holistically" },
+        { icon: <Bot size={20} color="#f97316" />, label: "AI Specialist", desc: "LLMs, RAG, AI pipelines" },
+        { icon: <Wrench size={20} color="#f97316" />, label: "Problem Solver", desc: "Debug anything, anywhere" },
+        { icon: <Rocket size={20} color="#f97316" />, label: "Fast Learner", desc: "New tech in days, not weeks" },
+        { icon: <Layers size={20} color="#f97316" />, label: "Architect", desc: "Scalable, clean systems" },
+        { icon: <RefreshCw size={20} color="#f97316" />, label: "Automator", desc: "Eliminate repetition at scale" },
       ];
 
   return (
@@ -450,23 +450,23 @@ function About() {
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-30px)", transition: "all 0.8s ease" }}>
             <h2 style={{ fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", lineHeight: 1.1, marginBottom: 28 }}>
               {lang === 'es' ? (
-                <>Ingeniero por lógica,<br /><span style={{ color: "#f97316" }}>creador</span> por pasión.</>
+                <>Técnico por lógica,<br /><span style={{ color: "#f97316" }}>creador</span> por pasión.</>
               ) : (
-                <>Engineer by logic,<br /><span style={{ color: "#f97316" }}>creator</span> by passion.</>
+                <>Technician by logic,<br /><span style={{ color: "#f97316" }}>creator</span> by passion.</>
               )}
             </h2>
             <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.9, marginBottom: 20, fontFamily: "system-ui" }}>{PROFILE[lang].bio}</p>
-            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, lineHeight: 1.8, fontFamily: "'Space Mono', monospace", borderLeft: "2px solid rgba(249,115,22,0.5)", paddingLeft: 20, marginTop: 32 }}>
+            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, lineHeight: 1.8, fontFamily: "'JetBrains Mono', monospace", borderLeft: "2px solid rgba(249,115,22,0.5)", paddingLeft: 20, marginTop: 32 }}>
               "{PROFILE[lang].philosophy}"
             </p>
           </div>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(30px)", transition: "all 0.8s ease 0.2s" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 30 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
               {traits.map((t, i) => (
                 <div key={t.label}
                   style={{
                     background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)",
-                    borderRadius: 12, padding: "20px", transition: "all 0.3s",
+                    borderRadius: 12, padding: "16px", transition: "all 0.3s",
                     opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(20px)",
                     transitionDelay: `${0.3 + i * 0.07}s`,
                     cursor: "default",
@@ -476,7 +476,7 @@ function About() {
                 >
                   <div style={{ fontSize: 24, marginBottom: 10 }}>{t.icon}</div>
                   <div style={{ color: "#fff", fontWeight: 700, fontSize: 14, fontFamily: "'Syne', sans-serif", marginBottom: 4 }}>{t.label}</div>
-                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{t.desc}</div>
+                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{t.desc}</div>
                 </div>
               ))}
             </div>
@@ -515,12 +515,12 @@ function TechStack() {
               border: `1px solid ${filter === c ? "#f97316" : "rgba(255,255,255,0.1)"}`,
               color: filter === c ? "#f97316" : "rgba(255,255,255,0.45)",
               padding: "6px 16px", borderRadius: 100, cursor: "pointer", fontSize: 11,
-              fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
+              fontFamily: "'JetBrains Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
             }}>{c.toUpperCase()}</button>
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 20 }}>
           {filtered.map((tech, i) => (
             <div key={tech.name}
               style={{
@@ -545,7 +545,7 @@ function TechStack() {
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
                 <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Syne', sans-serif" }}>{tech.name}</span>
-                <span style={{ fontSize: 10, color: tech.color, fontFamily: "'Space Mono', monospace", background: tech.color + "22", padding: "2px 8px", borderRadius: 4 }}>{tech.cat}</span>
+                <span style={{ fontSize: 10, color: tech.color, fontFamily: "'JetBrains Mono', monospace", background: tech.color + "22", padding: "2px 8px", borderRadius: 4 }}>{tech.cat}</span>
               </div>
               <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden" }}>
                 <div style={{
@@ -554,7 +554,7 @@ function TechStack() {
                   boxShadow: `0 0 8px ${tech.color}66`,
                 }} />
               </div>
-              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", fontFamily: "'Space Mono', monospace", marginTop: 6, textAlign: "right" }}>{tech.level}%</div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", fontFamily: "'JetBrains Mono', monospace", marginTop: 6, textAlign: "right" }}>{tech.level}%</div>
             </div>
           ))}
         </div>
@@ -622,9 +622,9 @@ function Experience() {
                 <div style={{ padding: "24px 28px" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
                     <div>
-                      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: exp.color, letterSpacing: 2, marginBottom: 6 }}>{exp.period}</div>
+                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: exp.color, letterSpacing: 2, marginBottom: 6 }}>{exp.period}</div>
                       <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: "#fff", marginBottom: 2 }}>{exp[`role_${lang}`]}</div>
-                      <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'Space Mono', monospace" }}>{exp.company} · {exp.location}</div>
+                      <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 14, fontFamily: "'JetBrains Mono', monospace" }}>{exp.company} · {exp.location}</div>
                     </div>
                     <div style={{ color: "rgba(255,255,255,0.3)", fontSize: 18, transition: "transform 0.3s", transform: expanded === exp.id ? "rotate(180deg)" : "rotate(0)" }}>▼</div>
                   </div>
@@ -637,7 +637,7 @@ function Experience() {
                     {/* Stack */}
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 20 }}>
                       {exp.stack.map(s => (
-                        <span key={s} style={{ background: exp.color + "18", border: `1px solid ${exp.color}33`, color: exp.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{s}</span>
+                        <span key={s} style={{ background: exp.color + "18", border: `1px solid ${exp.color}33`, color: exp.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
                       ))}
                     </div>
 
@@ -677,7 +677,7 @@ function Certifications() {
         <h2 style={{ fontSize: "clamp(28px, 3.5vw, 48px)", fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", marginTop: 16, marginBottom: 16 }}>
           {lang === 'es' ? "Grafo de conocimiento" : "Knowledge graph"}
         </h2>
-        <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, fontFamily: "'Space Mono', monospace", marginBottom: 60 }}>
+        <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, fontFamily: "'JetBrains Mono', monospace", marginBottom: 60 }}>
           {lang === 'es' 
             ? `${CERTIFICATIONS.reduce((a, c) => a + c.items.length, 0)} certificaciones en ${CERTIFICATIONS.length} proveedores`
             : `${CERTIFICATIONS.reduce((a, c) => a + c.items.length, 0)} certifications across ${CERTIFICATIONS.length} providers`
@@ -732,12 +732,12 @@ function Certifications() {
                         <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                       </svg>
                     ) : (
-                      <span style={{ fontSize: 16, fontWeight: 900, color: cert.color, fontFamily: "'Space Mono', monospace" }}>{cert.icon}</span>
+                      <span style={{ fontSize: 16, fontWeight: 900, color: cert.color, fontFamily: "'JetBrains Mono', monospace" }}>{cert.icon}</span>
                     )}
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16, color: "#fff" }}>{cert.provider}</div>
-                    <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{cert.items.length} {lang === 'es' ? `certificación${cert.items.length > 1 ? "es" : ""}` : `certification${cert.items.length > 1 ? "s" : ""}`}</div>
+                    <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{cert.items.length} {lang === 'es' ? `certificación${cert.items.length > 1 ? "es" : ""}` : `certification${cert.items.length > 1 ? "s" : ""}`}</div>
                   </div>
                   <div style={{ color: cert.color, fontSize: 16, transition: "transform 0.3s", transform: expanded === cert.id ? "rotate(45deg)" : "rotate(0)" }}>+</div>
                 </div>
@@ -754,12 +754,12 @@ function Certifications() {
                           {item.badge ? (
                             <img src={item.badge} alt={item.name} style={{ height: 32, borderRadius: 4, flexShrink: 0, marginLeft: 12 }} />
                           ) : (
-                            <span style={{ color: cert.color, fontFamily: "'Space Mono', monospace", fontSize: 11, flexShrink: 0, marginLeft: 12 }}>{item.year}</span>
+                            <span style={{ color: cert.color, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, flexShrink: 0, marginLeft: 12 }}>{item.year}</span>
                           )}
                         </div>
                         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
                           {item[`skills_${lang}`].map(s => (
-                            <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'Space Mono', monospace" }}>{s}</span>
+                            <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
                           ))}
                         </div>
                       </div>
@@ -781,24 +781,6 @@ function Certifications() {
 
 function ProjectCard({ proj, i, lang, inView }) {
   const [hovered, setHovered] = useState(false);
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 15;
-    const rotateY = (centerX - x) / 15;
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setHovered(false);
-    setRotate({ x: 0, y: 0 });
-  };
 
   return (
     <motion.div
@@ -811,13 +793,12 @@ function ProjectCard({ proj, i, lang, inView }) {
           background: hovered ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)",
           border: `1px solid ${hovered ? proj.color + "44" : "rgba(255,255,255,0.07)"}`,
           borderRadius: 20, padding: 32, cursor: "pointer",
-          transition: "background 0.3s, border 0.3s, transform 0.1s ease",
-          transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+          transition: "all 0.3s ease",
+          transform: hovered ? "translateY(-5px)" : "translateY(0)",
           position: "relative", overflow: "hidden",
         }}
         onMouseEnter={() => setHovered(true)}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => setHovered(false)}
       >
         {/* Glow bg */}
         <div style={{
@@ -829,9 +810,9 @@ function ProjectCard({ proj, i, lang, inView }) {
         <div style={{ position: "relative", zIndex: 1 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
             <div>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>{lang === 'es' ? 'PROYECTO' : 'PROJECT'}</div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: proj.color, letterSpacing: 2, marginBottom: 6 }}>{lang === 'es' ? 'PROYECTO' : 'PROJECT'}</div>
               <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, fontWeight: 800, color: "#fff", marginBottom: 4 }}>{proj.name}</h3>
-              <p style={{ color: proj.color, fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{proj[`tagline_${lang}`]}</p>
+              <p style={{ color: proj.color, fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{proj[`tagline_${lang}`]}</p>
             </div>
             <div style={{
               width: 44, height: 44, borderRadius: 10, background: proj.color + "20",
@@ -846,14 +827,14 @@ function ProjectCard({ proj, i, lang, inView }) {
           {/* Highlights */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
             {proj[`highlights_${lang}`].map(h => (
-              <span key={h} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", padding: "4px 12px", borderRadius: 6, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{h}</span>
+              <span key={h} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.65)", padding: "4px 12px", borderRadius: 6, fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>{h}</span>
             ))}
           </div>
 
           {/* Stack */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
             {proj.stack.map(s => (
-              <span key={s} style={{ background: proj.color + "15", color: proj.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'Space Mono', monospace" }}>{s}</span>
+              <span key={s} style={{ background: proj.color + "15", color: proj.color, padding: "3px 10px", borderRadius: 4, fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
             ))}
           </div>
 
@@ -863,7 +844,7 @@ function ProjectCard({ proj, i, lang, inView }) {
               style={{
                 background: proj.color + "20", border: `1px solid ${proj.color}44`,
                 color: proj.color, padding: "8px 16px", borderRadius: 8, fontSize: 12,
-                fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+                fontFamily: "'JetBrains Mono', monospace", textDecoration: "none", transition: "all 0.2s",
               }}
               onMouseEnter={e => { e.target.style.background = proj.color; e.target.style.color = "#fff"; }}
               onMouseLeave={e => { e.target.style.background = proj.color + "20"; e.target.style.color = proj.color; }}
@@ -874,7 +855,7 @@ function ProjectCard({ proj, i, lang, inView }) {
               style={{
                 background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
                 color: "rgba(255,255,255,0.6)", padding: "8px 16px", borderRadius: 8, fontSize: 12,
-                fontFamily: "'Space Mono', monospace", textDecoration: "none", transition: "all 0.2s",
+                fontFamily: "'JetBrains Mono', monospace", textDecoration: "none", transition: "all 0.2s",
               }}
               onMouseEnter={e => { e.target.style.borderColor = "#fff"; e.target.style.color = "#fff"; }}
               onMouseLeave={e => { e.target.style.borderColor = "rgba(255,255,255,0.1)"; e.target.style.color = "rgba(255,255,255,0.6)"; }}
@@ -930,12 +911,12 @@ function Skills() {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 60 }}>
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-20px)", transition: "all 0.7s ease" }}>
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Competencias Clave' : 'Core Competencies'}</h3>
+            <h3 style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Competencias Clave' : 'Core Competencies'}</h3>
             {hardSkills.map((s, i) => (
               <div key={s.name} style={{ marginBottom: 24, opacity: inView ? 1 : 0, transition: `opacity 0.5s ease ${0.2 + i * 0.1}s` }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
                   <span style={{ color: "#fff", fontSize: 14, fontFamily: "'Syne', sans-serif", fontWeight: 600 }}>{s.name}</span>
-                  <span style={{ color: "#f97316", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{s.level}%</span>
+                  <span style={{ color: "#f97316", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{s.level}%</span>
                 </div>
                 <div style={{ height: 3, background: "rgba(255,255,255,0.06)", borderRadius: 2, overflow: "hidden" }}>
                   <div style={{
@@ -950,7 +931,7 @@ function Skills() {
           </div>
 
           <div style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(20px)", transition: "all 0.7s ease 0.2s" }}>
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#06b6d4", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Habilidades Blandas y Enfoque' : 'Soft Skills & Approach'}</h3>
+            <h3 style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#06b6d4", letterSpacing: 3, marginBottom: 32, textTransform: "uppercase" }}>{lang === 'es' ? 'Habilidades Blandas y Enfoque' : 'Soft Skills & Approach'}</h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
               {softSkills.map((s, i) => (
                 <span key={s} style={{
@@ -966,7 +947,7 @@ function Skills() {
             </div>
 
             {/* Specialization areas */}
-            <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#8b5cf6", letterSpacing: 3, marginBottom: 20, marginTop: 40, textTransform: "uppercase" }}>{lang === 'es' ? 'Especializaciones' : 'Specializations'}</h3>
+            <h3 style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#8b5cf6", letterSpacing: 3, marginBottom: 20, marginTop: 40, textTransform: "uppercase" }}>{lang === 'es' ? 'Especializaciones' : 'Specializations'}</h3>
             {SKILLS[lang].specializations.map((spec, i) => (
               <div key={spec} style={{
                 display: "flex", alignItems: "center", gap: 12, padding: "10px 0",
@@ -1011,9 +992,9 @@ function Contact() {
           opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s ease",
         }}>
           {lang === 'es' ? (
-            <>Vamos a construir<br /><span style={{ color: "#f97316" }}>algo</span><br />grande juntos.</>
+            <>Vamos a construir<br /><span style={{ color: "#f97316" }}>algo grande</span> juntos.</>
           ) : (
-            <>Let's build<br /><span style={{ color: "#f97316" }}>something</span><br />great together.</>
+            <>Let's build<br /><span style={{ color: "#f97316" }}>something great</span> together.</>
           )}
         </h2>
         <p style={{
@@ -1022,8 +1003,8 @@ function Contact() {
           opacity: inView ? 1 : 0, transition: "opacity 0.7s ease 0.2s",
         }}>
           {lang === 'es' 
-            ? "Disponible para roles de ingeniería senior, consultoría técnica y desarrollo de productos de IA. Conectemos."
-            : "Available for senior engineering roles, technical consulting, and AI product development. Let's connect."
+            ? "Disponible para roles técnicos senior, consultoría de sistemas y desarrollo de soluciones de IA. Conectemos."
+            : "Available for senior technical roles, systems consulting, and AI solutions development. Let's connect."
           }
         </p>
 
@@ -1038,8 +1019,8 @@ function Contact() {
           onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
         >
           <span style={{ color: "#f97316", fontSize: 16 }}>✉</span>
-          <span style={{ color: "#fff", fontFamily: "'Space Mono', monospace", fontSize: 14 }}>{PROFILE[lang].email}</span>
-          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, fontFamily: "'Space Mono', monospace" }}>{copied ? (lang === 'es' ? "¡COPIADO!" : "COPIED!") : (lang === 'es' ? "CLIC PARA COPIAR" : "CLICK TO COPY")}</span>
+          <span style={{ color: "#fff", fontFamily: "'JetBrains Mono', monospace", fontSize: 14 }}>{PROFILE[lang].email}</span>
+          <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12, fontFamily: "'JetBrains Mono', monospace" }}>{copied ? (lang === 'es' ? "¡COPIADO!" : "COPIED!") : (lang === 'es' ? "CLIC PARA COPIAR" : "CLICK TO COPY")}</span>
         </div>
 
         {/* Social links */}
@@ -1052,7 +1033,7 @@ function Contact() {
               style={{
                 background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
                 color: "rgba(255,255,255,0.6)", padding: "12px 28px", borderRadius: 8, textDecoration: "none",
-                fontFamily: "'Space Mono', monospace", fontSize: 13, letterSpacing: 1, transition: "all 0.2s",
+                fontFamily: "'JetBrains Mono', monospace", fontSize: 13, letterSpacing: 1, transition: "all 0.2s",
               }}
               onMouseEnter={e => { e.target.style.color = color; e.target.style.borderColor = color + "66"; e.target.style.background = color + "11"; }}
               onMouseLeave={e => { e.target.style.color = "rgba(255,255,255,0.6)"; e.target.style.borderColor = "rgba(255,255,255,0.1)"; e.target.style.background = "rgba(255,255,255,0.03)"; }}
@@ -1073,11 +1054,11 @@ function Footer() {
   return (
     <footer style={{ background: "#03030a", padding: "32px 5%", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.2)" }}>
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.2)" }}>
           © 2025 {PROFILE[lang].name} · {lang === 'es' ? 'Construido con' : 'Built with'} Next.js & Framer Motion
         </span>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.15)" }}>
-          {lang === 'es' ? 'DISEÑADO E INGENIADO CON PRECISIÓN' : 'DESIGNED & ENGINEERED WITH PRECISION'}
+        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.15)" }}>
+          {lang === 'es' ? 'DISEÑADO Y CONSTRUIDO CON PRECISIÓN' : 'DESIGNED & BUILT WITH PRECISION'}
         </span>
       </div>
     </footer>
@@ -1092,7 +1073,7 @@ function SectionLabel({ label, center = false }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 12, justifyContent: center ? "center" : "flex-start" }}>
       <div style={{ width: 32, height: 1, background: "#f97316" }} />
-      <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3 }}>{label}</span>
+      <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#f97316", letterSpacing: 3 }}>{label}</span>
     </div>
   );
 }
@@ -1120,7 +1101,7 @@ export default function Portfolio() {
   return (
     <LangContext.Provider value={{ lang, setLang }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body { background: #0c0a09; color: #fff; overflow-x: hidden; }
