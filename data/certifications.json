@@ -63,5 +63,23 @@
         "year": "2023", "skills": ["Digitalización", "Tech"]
       }
     ]
+  },
+  {
+    "id": "cert-udemy",
+    "provider": "Udemy",
+    "color": "#A435F0",
+    "icon": "U",
+    "items": [
+      { 
+        "name": "Machine Learning", 
+        "year": "2024", 
+        "skills": ["Machine Learning", "Python", "Data Science"]
+      },
+      { 
+        "name": "Master en Antigravity", 
+        "year": "2024", 
+        "skills": ["Advanced Agentic Coding", "AI", "Antigravity"]
+      }
+    ]
   }
 ]

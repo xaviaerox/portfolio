@@ -4,7 +4,9 @@
 // Stack: React + Tailwind-like inline styles + CSS animations
 // Ready to migrate to Next.js + Framer Motion
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
+
+const LangContext = createContext();
 
 // ============================================================
 // DATA LAYER
@@ -136,13 +138,33 @@ function ParticleField({ count = 60 }) {
 // ============================================================
 
 function Nav({ scrollY }) {
+  const { lang, setLang } = useContext(LangContext);
   const [open, setOpen] = useState(false);
   const scrolled = scrollY > 60;
-  const links = ["About", "Stack", "Experience", "Certifications", "Projects", "Contact"];
+  
+  const links = lang === 'es'
+    ? [
+        { label: "Sobre mí", id: "about" },
+        { label: "Tecnologías", id: "stack" },
+        { label: "Experiencia", id: "experience" },
+        { label: "Certificaciones", id: "certifications" },
+        { label: "Proyectos", id: "projects" },
+        { label: "Contacto", id: "contact" }
+      ]
+    : [
+        { label: "About", id: "about" },
+        { label: "Stack", id: "stack" },
+        { label: "Experience", id: "experience" },
+        { label: "Certifications", id: "certifications" },
+        { label: "Projects", id: "projects" },
+        { label: "Contact", id: "contact" }
+      ];
+
   const scrollTo = (id) => {
     document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   };
+
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
@@ -154,29 +176,50 @@ function Nav({ scrollY }) {
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 16, fontWeight: 700, color: "#6366f1", letterSpacing: 2 }}>
-          AM<span style={{ color: "rgba(99,102,241,0.4)" }}>_</span>
+          XA<span style={{ color: "rgba(99,102,241,0.4)" }}>_</span>
         </span>
         <div style={{ display: "flex", gap: 36 }}>
           {links.map(l => (
-            <button key={l} onClick={() => scrollTo(l)}
+            <button key={l.id} onClick={() => scrollTo(l.id)}
               style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,0.55)", fontSize: 13, fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "color 0.2s", padding: "4px 0" }}
               onMouseEnter={e => e.target.style.color = "#fff"}
               onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.55)"}
-            >{l}</button>
+            >{l.label}</button>
           ))}
         </div>
-        <button
-          onClick={() => scrollTo("Contact")}
-          style={{
-            background: "transparent", border: "1px solid rgba(99,102,241,0.5)", color: "#6366f1",
-            padding: "8px 20px", borderRadius: 6, cursor: "pointer", fontSize: 12,
-            fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
-          }}
-          onMouseEnter={e => { e.target.style.background = "rgba(99,102,241,0.15)"; e.target.style.borderColor = "#6366f1"; }}
-          onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(99,102,241,0.5)"; }}
-        >
-          HIRE ME
-        </button>
+        
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          {/* Language Switcher */}
+          <div style={{ display: "flex", gap: 8, fontFamily: "'Space Mono', monospace", fontSize: 13 }}>
+            <button 
+              onClick={() => setLang('es')}
+              style={{ background: "none", border: "none", cursor: "pointer", color: lang === 'es' ? "#6366f1" : "rgba(255,255,255,0.3)", fontWeight: lang === 'es' ? 700 : 400, transition: "color 0.2s" }}
+              onMouseEnter={e => { if (lang !== 'es') e.target.style.color = "rgba(255,255,255,0.7)"; }}
+              onMouseLeave={e => { if (lang !== 'es') e.target.style.color = "rgba(255,255,255,0.3)"; }}
+            >ES</button>
+            <span style={{ color: "rgba(255,255,255,0.15)" }}>/</span>
+            <button 
+              onClick={() => setLang('en')}
+              style={{ background: "none", border: "none", cursor: "pointer", color: lang === 'en' ? "#6366f1" : "rgba(255,255,255,0.3)", fontWeight: lang === 'en' ? 700 : 400, transition: "color 0.2s" }}
+              onMouseEnter={e => { if (lang !== 'en') e.target.style.color = "rgba(255,255,255,0.7)"; }}
+              onMouseLeave={e => { if (lang !== 'en') e.target.style.color = "rgba(255,255,255,0.3)"; }}
+            >EN</button>
+          </div>
+
+          {/* Hire Me Button */}
+          <button
+            onClick={() => scrollTo("Contact")}
+            style={{
+              background: "transparent", border: "1px solid rgba(99,102,241,0.5)", color: "#6366f1",
+              padding: "8px 20px", borderRadius: 6, cursor: "pointer", fontSize: 12,
+              fontFamily: "'Space Mono', monospace", letterSpacing: 1, transition: "all 0.2s",
+            }}
+            onMouseEnter={e => { e.target.style.background = "rgba(99,102,241,0.15)"; e.target.style.borderColor = "#6366f1"; }}
+            onMouseLeave={e => { e.target.style.background = "transparent"; e.target.style.borderColor = "rgba(99,102,241,0.5)"; }}
+          >
+            {lang === 'es' ? 'CONTRÁTAME' : 'HIRE ME'}
+          </button>
+        </div>
       </div>
     </nav>
   );
@@ -215,19 +258,39 @@ function Hero() {
           <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 1 }}>AVAILABLE FOR OPPORTUNITIES</span>
         </div>
 
-        {/* Name */}
-        <h1 style={{
-          fontSize: "clamp(52px, 8vw, 96px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: -2,
-          color: "#fff", fontFamily: "'Syne', sans-serif", marginBottom: 8,
+        {/* Name and Photo */}
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 40,
+          marginBottom: 8,
+          flexWrap: "wrap",
           opacity: mounted ? 1 : 0, transform: mounted ? "translateY(0)" : "translateY(24px)",
           transition: "all 0.7s ease 0.25s",
         }}>
-          {PROFILE.name.split(" ").map((w, i) => (
-            <span key={i} style={{ display: "block" }}>
-              {i === 1 ? <span style={{ WebkitTextStroke: "1px rgba(99,102,241,0.7)", WebkitTextFillColor: "transparent", color: "transparent" }}>{w}</span> : w}
-            </span>
-          ))}
-        </h1>
+          <h1 style={{
+            fontSize: "clamp(52px, 8vw, 96px)", fontWeight: 800, lineHeight: 1.05, letterSpacing: -2,
+            color: "#fff", fontFamily: "'Syne', sans-serif",
+          }}>
+            {PROFILE.name.split(" ").map((w, i) => (
+              <span key={i} style={{ display: "block" }}>
+                {i === 1 ? <span style={{ WebkitTextStroke: "1px rgba(99,102,241,0.7)", WebkitTextFillColor: "transparent", color: "transparent" }}>{w}</span> : w}
+              </span>
+            ))}
+          </h1>
+          <div style={{
+            width: "clamp(150px, 20vw, 250px)",
+            height: "clamp(150px, 20vw, 250px)",
+            borderRadius: "50%",
+            overflow: "hidden",
+            border: "2px solid rgba(99,102,241,0.5)",
+            boxShadow: "0 0 40px rgba(99,102,241,0.3)",
+            flexShrink: 0,
+          }}>
+            <img src="/xavi-alonso.jpg" alt="Xavi Alonso" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </div>
+        </div>
 
         {/* Role */}
         <div style={{
@@ -280,11 +343,12 @@ function Hero() {
         {/* Stats row */}
         <div style={{
           display: "flex", gap: 48, marginTop: 80, paddingTop: 48,
+          justifyContent: "center",
           borderTop: "1px solid rgba(255,255,255,0.06)",
           opacity: mounted ? 1 : 0, transition: "opacity 0.8s ease 1.1s",
         }}>
           {[["12+", "Años Exp."], ["3+", "Casos Éxito"], ["6+", "Certificados"], ["100%", "Disponibilidad"]].map(([n, l]) => (
-            <div key={l}>
+            <div key={l} style={{ textAlign: "center" }}>
               <div style={{ fontSize: 32, fontWeight: 800, color: "#fff", fontFamily: "'Syne', sans-serif", lineHeight: 1 }}>{n}</div>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", fontFamily: "'Space Mono', monospace", letterSpacing: 1, marginTop: 6 }}>{l}</div>
             </div>
@@ -888,9 +952,10 @@ function SectionLabel({ label, center = false }) {
 
 export default function Portfolio() {
   const scrollY = useScrollY();
+  const [lang, setLang] = useState('es');
 
   return (
-    <>
+    <LangContext.Provider value={{ lang, setLang }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -915,6 +980,6 @@ export default function Portfolio() {
       <Skills />
       <Contact />
       <Footer />
-    </>
+    </LangContext.Provider>
   );
 }
