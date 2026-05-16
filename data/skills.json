@@ -10,7 +10,7 @@
     { "name": "Windows Server", "cat": "Sistemas", "level": 90, "color": "#0078D4" },
     { "name": "Python", "cat": "Scripting", "level": 80, "color": "#3776AB" },
     { "name": "pfSense", "cat": "Seguridad", "level": 88, "color": "#E02424" },
-    { "name": "MikroTik", "cat": "Redes", "level": 85, "color": "#6366F1" },
+    { "name": "MikroTik", "cat": "Redes", "level": 85, "color": "#f97316" },
     { "name": "Automatización", "cat": "Procesos", "level": 91, "color": "#EC4899" }
   ],
   "hard_skills": [
