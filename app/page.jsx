@@ -747,21 +747,97 @@ function Certifications() {
                   <div style={{ padding: "16px 22px 20px" }}>
                     {cert.items.map((item, j) => (
                       <div key={item.name} style={{
-                        padding: "14px 0", borderBottom: j < cert.items.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                        padding: "14px 0",
+                        borderBottom: j < cert.items.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
+                        display: "flex",
+                        gap: 20,
+                        alignItems: "center",
+                        justifyContent: "space-between",
                       }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                          <span style={{ color: "#fff", fontSize: 13, fontFamily: "'Syne', sans-serif", fontWeight: 600, flex: 1 }}>{item[`name_${lang}`]}</span>
-                          {item.badge ? (
-                            <img src={item.badge} alt={item.name} style={{ height: 32, borderRadius: 4, flexShrink: 0, marginLeft: 12 }} />
-                          ) : (
-                            <span style={{ color: cert.color, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, flexShrink: 0, marginLeft: 12 }}>{item.year}</span>
-                          )}
+                        <div style={{ flex: 1 }}>
+                          <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 6 }}>
+                            <span style={{ color: "#fff", fontSize: 14, fontFamily: "'Syne', sans-serif", fontWeight: 600 }}>{item[`name_${lang}`]}</span>
+                            <span style={{ color: cert.color, fontFamily: "'JetBrains Mono', monospace", fontSize: 11 }}>{item.year}</span>
+                          </div>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, alignItems: "center" }}>
+                            {item[`skills_${lang}`].map(s => (
+                              <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
+                            ))}
+                            {item.credly_badge_id && (
+                              <a 
+                                href={`https://www.credly.com/badges/${item.credly_badge_id}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{
+                                  color: "rgba(255,255,255,0.4)",
+                                  fontSize: 10,
+                                  fontFamily: "'JetBrains Mono', monospace",
+                                  textDecoration: "none",
+                                  marginLeft: 8,
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4,
+                                  transition: "color 0.2s"
+                                }}
+                                onMouseEnter={e => e.target.style.color = cert.color}
+                                onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.4)"}
+                              >
+                                <span>[{lang === 'es' ? 'Verificar ↗' : 'Verify ↗'}]</span>
+                              </a>
+                            )}
+                            {item.pdf && (
+                              <a 
+                                href={item.pdf}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{
+                                  color: "rgba(255,255,255,0.4)",
+                                  fontSize: 10,
+                                  fontFamily: "'JetBrains Mono', monospace",
+                                  textDecoration: "none",
+                                  marginLeft: 8,
+                                  display: "inline-flex",
+                                  alignItems: "center",
+                                  gap: 4,
+                                  transition: "color 0.2s"
+                                }}
+                                onMouseEnter={e => e.target.style.color = cert.color}
+                                onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.4)"}
+                              >
+                                <span>[{lang === 'es' ? 'Ver Certificado ↗' : 'Certificate ↗'}]</span>
+                              </a>
+                            )}
+                          </div>
                         </div>
-                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
-                          {item[`skills_${lang}`].map(s => (
-                            <span key={s} style={{ background: cert.color + "15", color: cert.color, padding: "2px 8px", borderRadius: 4, fontSize: 10, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
-                          ))}
-                        </div>
+                        {item.badge && (
+                          <div style={{ position: "relative", flexShrink: 0 }}>
+                            {item.credly_badge_id || item.pdf ? (
+                              <a href={item.credly_badge_id ? `https://www.credly.com/badges/${item.credly_badge_id}` : item.pdf} target="_blank" rel="noreferrer" style={{ display: "block" }}>
+                                <img 
+                                  src={item.badge} 
+                                  alt={item.name} 
+                                  style={{ 
+                                    height: 48, 
+                                    width: 48,
+                                    objectFit: "contain",
+                                    borderRadius: 8, 
+                                    transition: "transform 0.2s, filter 0.2s" 
+                                  }}
+                                  onMouseEnter={e => {
+                                    e.currentTarget.style.transform = "scale(1.15)";
+                                    e.currentTarget.style.filter = "brightness(1.1)";
+                                  }}
+                                  onMouseLeave={e => {
+                                    e.currentTarget.style.transform = "scale(1)";
+                                    e.currentTarget.style.filter = "none";
+                                  }}
+                                />
+                              </a>
+                            ) : (
+                              <img src={item.badge} alt={item.name} style={{ height: 48, width: 48, objectFit: "contain", borderRadius: 8 }} />
+                            )}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

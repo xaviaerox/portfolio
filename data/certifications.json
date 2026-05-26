@@ -11,7 +11,9 @@
         "year": "2024", 
         "skills_es": ["Ciberseguridad", "Seguridad de Redes"],
         "skills_en": ["Cybersecurity", "Network Security"],
-        "badge": "certificaciones/CISCO/I2CS__1_.png"
+        "badge": "certificaciones/CISCO/I2CS__1_.png",
+        "credly_badge_id": "40a73732-5dd1-4920-9294-c4e526fb9f84",
+        "pdf": "certificaciones/CISCO/Introduction_to_Cybersecurity_certificate_xaviaerox-gmail-com_b72309df-697c-49de-b5d1-2088bba1b288.pdf"
       },
       { 
         "name_es": "English for IT 1", 
@@ -19,7 +21,9 @@
         "year": "2024", 
         "skills_es": ["Inglés", "Comunicación IT"],
         "skills_en": ["English", "IT Communication"],
-        "badge": "certificaciones/CISCO/English for IT 1.png"
+        "badge": "certificaciones/CISCO/English for IT 1.png",
+        "credly_badge_id": "227098fe-3415-46fd-9b76-4304d9d19cdc",
+        "pdf": "certificaciones/CISCO/English_for_IT_1_certificate_xaviaerox-gmail-com_e474186b-94c5-431e-8808-cd6ca53a79a3.pdf"
       }
     ]
   },
@@ -34,7 +38,10 @@
         "name_en": "Google Cybersecurity", 
         "year": "2024", 
         "skills_es": ["Ciberseguridad", "Python", "SIEM"],
-        "skills_en": ["Cybersecurity", "Python", "SIEM"]
+        "skills_en": ["Cybersecurity", "Python", "SIEM"],
+        "badge": "certificaciones/Google/Google Ciberseguridad/Badges/google-cybersecurity-professional-certificate-v-2.png",
+        "credly_badge_id": "d9400999-a13b-41c7-8d8a-08b0e34dd603",
+        "pdf": "certificaciones/Google/Google Ciberseguridad/00-Coursera WC08RCS3E9J0.pdf"
       },
       { 
         "name_es": "Google IA", 
@@ -42,7 +49,9 @@
         "year": "2024", 
         "skills_es": ["IA", "Ingeniería de Prompts"],
         "skills_en": ["AI", "Prompt Engineering"],
-        "badge": "certificaciones/Google/Google IA/Badges-Credly/00.png"
+        "badge": "certificaciones/Google/Google IA/Badges-Credly/00.png",
+        "credly_badge_id": "9554154f-e044-4cc8-a471-3a5039c6fc10",
+        "pdf": "certificaciones/Google/Google IA/00-Google IA.pdf"
       }
     ]
   },
@@ -73,7 +82,8 @@
         "name_en": "Operations with digital enabling technologies", 
         "year": "2023", 
         "skills_es": ["Digitalización", "Tecnología"],
-        "skills_en": ["Digitalization", "Tech"]
+        "skills_en": ["Digitalization", "Tech"],
+        "pdf": "certificaciones/Digitalización/Diploma_CEOE_Operaciones con tecnologías habilitadoras digitales.pdf"
       }
     ]
   },
@@ -88,14 +98,16 @@
         "name_en": "Machine Learning", 
         "year": "2024", 
         "skills_es": ["Aprendizaje Automático", "Python", "Ciencia de Datos"],
-        "skills_en": ["Machine Learning", "Python", "Data Science"]
+        "skills_en": ["Machine Learning", "Python", "Data Science"],
+        "pdf": "certificaciones/Machine Learning/UC-1e5439ad-5547-4f88-bcbb-56eb1ff0a19d.pdf"
       },
       { 
         "name_es": "Master en Antigravity", 
         "name_en": "Master in Antigravity", 
         "year": "2024", 
         "skills_es": ["Codificación Agente Avanzada", "IA", "Antigravity"],
-        "skills_en": ["Advanced Agentic Coding", "AI", "Antigravity"]
+        "skills_en": ["Advanced Agentic Coding", "AI", "Antigravity"],
+        "pdf": "certificaciones/Antigravity/UC-11f78d32-ea05-4a9b-817e-26b098847913.pdf"
       }
     ]
   }
