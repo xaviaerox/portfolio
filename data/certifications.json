@@ -24,6 +24,15 @@
         "badge": "certificaciones/CISCO/English for IT 1.png",
         "credly_badge_id": "227098fe-3415-46fd-9b76-4304d9d19cdc",
         "pdf": "certificaciones/CISCO/English_for_IT_1_certificate_xaviaerox-gmail-com_e474186b-94c5-431e-8808-cd6ca53a79a3.pdf"
+      },
+      {
+        "name_es": "Networking Basics",
+        "name_en": "Networking Basics",
+        "year": "2026",
+        "skills_es": ["Redes", "Direccionamiento IP", "Conectividad"],
+        "skills_en": ["Networking", "IP Addressing", "Connectivity"],
+        "badge": "certificaciones/CISCO/networking-basics.png",
+        "pdf": "certificaciones/CISCO/NetworkingBasicsUpdate20260529-31-rwcw7j.pdf"
       }
     ]
   },
@@ -52,6 +61,22 @@
         "badge": "certificaciones/Google/Google IA/Badges-Credly/00.png",
         "credly_badge_id": "9554154f-e044-4cc8-a471-3a5039c6fc10",
         "pdf": "certificaciones/Google/Google IA/00-Google IA.pdf"
+      }
+    ]
+  },
+  {
+    "id": "cert-anthropic",
+    "provider": "Anthropic",
+    "color": "#CC785C",
+    "icon": "A",
+    "items": [
+      {
+        "name_es": "Claude 101",
+        "name_en": "Claude 101",
+        "year": "2026",
+        "skills_es": ["Modelos de Lenguaje Grande", "Ingeniería de Prompts", "IA de Anthropic"],
+        "skills_en": ["LLMs", "Prompt Engineering", "Anthropic AI"],
+        "pdf": "certificaciones/Claude/certificate-98hrpt2nhusn-1780038830.pdf"
       }
     ]
   },
