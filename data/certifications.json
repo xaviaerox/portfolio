@@ -77,6 +77,14 @@
         "skills_es": ["Modelos de Lenguaje Grande", "Ingeniería de Prompts", "IA de Anthropic"],
         "skills_en": ["LLMs", "Prompt Engineering", "Anthropic AI"],
         "pdf": "certificaciones/Claude/certificate-98hrpt2nhusn-1780038830.pdf"
+      },
+      {
+        "name_es": "Claude Code 101",
+        "name_en": "Claude Code 101",
+        "year": "2026",
+        "skills_es": ["Claude Code", "Asistentes de Codificación", "Automatización de Desarrollo"],
+        "skills_en": ["Claude Code", "Coding Assistants", "Development Automation"],
+        "pdf": "certificaciones/Claude/certificate-ddmfbsvtpnch-1780049546.pdf"
       }
     ]
   },
