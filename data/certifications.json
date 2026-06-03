@@ -143,5 +143,21 @@
         "pdf": "certificaciones/Antigravity/UC-11f78d32-ea05-4a9b-817e-26b098847913.pdf"
       }
     ]
+  },
+  {
+    "id": "cert-n8n",
+    "provider": "n8n",
+    "color": "#FF6D5A",
+    "icon": "N",
+    "items": [
+      { 
+        "name_es": "Automatización con n8n", 
+        "name_en": "Automation with n8n", 
+        "year": "2026", 
+        "skills_es": ["Automatización", "n8n", "Flujos de trabajo"],
+        "skills_en": ["Automation", "n8n", "Workflows"],
+        "pdf": "certificaciones/Automatización/n8n.pdf"
+      }
+    ]
   }
 ]
