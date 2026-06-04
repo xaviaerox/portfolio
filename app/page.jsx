@@ -7,7 +7,7 @@
 import { useState, useEffect, useRef, useCallback, createContext, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
-import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Menu, X, Check, Globe, Zap, Bot, Wrench, Rocket, Layers, RefreshCw } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, ArrowRight, Menu, X, Check, Globe, Zap, Bot, Wrench, Rocket, Layers, RefreshCw, Workflow, BrainCircuit, Cpu, Building, GraduationCap } from "lucide-react";
 
 const LangContext = createContext();
 
@@ -731,6 +731,16 @@ function Certifications() {
                         <path fill="#FBBC05" d="M10.54 28.59c-.48-1.45-.76-2.99-.76-4.59s.28-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.98-6.19z"/>
                         <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                       </svg>
+                    ) : cert.provider === "Anthropic" ? (
+                      <BrainCircuit color={cert.color} size={24} />
+                    ) : cert.provider === "University of Helsinki" ? (
+                      <Cpu color={cert.color} size={24} />
+                    ) : cert.provider === "CEOE" ? (
+                      <Building color={cert.color} size={24} />
+                    ) : cert.provider === "Udemy" ? (
+                      <GraduationCap color={cert.color} size={24} />
+                    ) : cert.provider === "n8n" ? (
+                      <Workflow color={cert.color} size={24} />
                     ) : (
                       <span style={{ fontSize: 16, fontWeight: 900, color: cert.color, fontFamily: "'JetBrains Mono', monospace" }}>{cert.icon}</span>
                     )}
