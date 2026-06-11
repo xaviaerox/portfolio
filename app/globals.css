@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0c0a09;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scrollPulse {
+  0% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(0.5); transform-origin: top; opacity: 0.5; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+}
