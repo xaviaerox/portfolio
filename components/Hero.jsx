@@ -98,7 +98,7 @@ export default function Hero() {
             ))}
           </h1>
           <div className="w-[clamp(150px,20vw,250px)] h-[clamp(150px,20vw,250px)] rounded-full overflow-hidden border-2 border-brand-accent/50 shadow-[0_0_40px_rgba(99,102,241,0.3)] shrink-0">
-            <img src="/xavi-alonso.jpg" alt={PROFILE[lang].name} className="w-full h-full object-cover" />
+            <img src="xavi-alonso.jpg" alt={PROFILE[lang].name} className="w-full h-full object-cover" />
           </div>
         </motion.div>
 
