@@ -85,6 +85,22 @@
         "skills_es": ["Claude Code", "Asistentes de Codificación", "Automatización de Desarrollo"],
         "skills_en": ["Claude Code", "Coding Assistants", "Development Automation"],
         "pdf": "certificaciones/Claude/certificate-ddmfbsvtpnch-1780049546.pdf"
+      },
+      {
+        "name_es": "Introduction to Claude Cowork",
+        "name_en": "Introduction to Claude Cowork",
+        "year": "2026",
+        "skills_es": ["Claude Cowork", "Colaboración con IA", "Modelos de Lenguaje Grande"],
+        "skills_en": ["Claude Cowork", "AI Collaboration", "LLMs"],
+        "pdf": "certificaciones/Claude/certificate-pj9ocbicjwpj-1780649488.pdf"
+      },
+      {
+        "name_es": "Claude Code in Action",
+        "name_en": "Claude Code in Action",
+        "year": "2026",
+        "skills_es": ["Claude Code", "Automatización de Desarrollo", "Asistentes de Codificación"],
+        "skills_en": ["Claude Code", "Development Automation", "Coding Assistants"],
+        "pdf": "certificaciones/Claude/certificate-ztpjiynm6qfm-1780675511.pdf"
       }
     ]
   },
