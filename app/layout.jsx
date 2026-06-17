@@ -21,8 +21,45 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata = {
-  title: 'Portfolio - Xavi Alonso',
-  description: 'Operador IT & Arquitecto de Infraestructura',
+  title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
+  description: 'Portafolio profesional de Xavi Alonso, especialista en infraestructuras críticas, seguridad operativa y alta disponibilidad. Creador de Queryclin y StockFlow.',
+  keywords: [
+    'Xavi Alonso', 'IT Operator', 'Operador IT', 'Infrastructure Architect', 'Arquitecto de Infraestructura', 
+    'Alta Disponibilidad', 'Seguridad Operativa', 'Ciberseguridad', 'Dolibarr ERP', 'Queryclin', 'StockFlow',
+    'Sistemas Críticos', 'Proxmox', 'Zero Trust', 'DevOps', 'Desarrollador Web'
+  ],
+  authors: [{ name: 'Xavi Alonso' }],
+  creator: 'Xavi Alonso',
+  publisher: 'Xavi Alonso',
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://xaviaerox.github.io/portfolio/',
+  },
+  openGraph: {
+    title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
+    description: 'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
+    url: 'https://xaviaerox.github.io/portfolio/',
+    siteName: 'Xavi Alonso Portfolio',
+    images: [
+      {
+        url: 'https://xaviaerox.github.io/portfolio/xavi-alonso.jpg',
+        width: 800,
+        height: 800,
+        alt: 'Xavi Alonso',
+      },
+    ],
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
+    description: 'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
+    images: ['https://xaviaerox.github.io/portfolio/xavi-alonso.jpg'],
+  },
 }
 
 export default function RootLayout({ children }) {
