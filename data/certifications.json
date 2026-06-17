@@ -159,5 +159,22 @@
         "pdf": "certificaciones/Automatización/n8n.pdf"
       }
     ]
+  },
+  {
+    "id": "cert-microsoft",
+    "provider": "Microsoft",
+    "color": "#00A4EF",
+    "icon": "M",
+    "items": [
+      {
+        "name_es": "AI Skills Fest 2026",
+        "name_en": "AI Skills Fest 2026",
+        "year": "2026",
+        "skills_es": ["Inteligencia Artificial", "Herramientas de IA", "IA Responsable", "Productividad"],
+        "skills_en": ["Artificial Intelligence", "AI Tools", "Responsible AI", "Productivity"],
+        "badge": "certificaciones/Microsoft/AI Skills Fest 2026.png",
+        "credly_badge_id": "be958f9d-8d62-4a9e-8e67-334e2a551c6c"
+      }
+    ]
   }
 ]

@@ -69,6 +69,13 @@ export default function Certifications() {
                         <path fill="#FBBC05" d="M10.54 28.59c-.48-1.45-.76-2.99-.76-4.59s.28-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.98-6.19z"/>
                         <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
                       </svg>
+                    ) : cert.provider === "Microsoft" ? (
+                      <svg viewBox="0 0 23 23" width="24" height="24">
+                        <rect x="0" y="0" width="10.5" height="10.5" fill="#f25022"/>
+                        <rect x="12.5" y="0" width="10.5" height="10.5" fill="#7fba00"/>
+                        <rect x="0" y="12.5" width="10.5" height="10.5" fill="#00a4ef"/>
+                        <rect x="12.5" y="12.5" width="10.5" height="10.5" fill="#ffb900"/>
+                      </svg>
                     ) : cert.provider === "Anthropic" ? (
                       <BrainCircuit color={cert.color} size={24} />
                     ) : cert.provider === "University of Helsinki" ? (
