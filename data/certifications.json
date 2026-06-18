@@ -61,6 +61,15 @@
         "badge": "certificaciones/Google/Google IA/Badges-Credly/00.png",
         "credly_badge_id": "9554154f-e044-4cc8-a471-3a5039c6fc10",
         "pdf": "certificaciones/Google/Google IA/00-Google IA.pdf"
+      },
+      {
+        "name_es": "5-Day AI Agents: Intensive Vibe Coding Course With Google",
+        "name_en": "5-Day AI Agents: Intensive Vibe Coding Course With Google",
+        "year": "2026",
+        "skills_es": ["Agentes de IA", "Vibe Coding", "Vertex AI", "Gemini", "Automatización"],
+        "skills_en": ["AI Agents", "Vibe Coding", "Vertex AI", "Gemini", "Automation"],
+        "badge": "certificaciones/Google/five-day-ai-agents.png",
+        "pdf": "https://developers.google.com/profile/badges/events/cloud/five-day-ai-agents"
       }
     ]
   },
