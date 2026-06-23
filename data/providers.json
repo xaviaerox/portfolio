@@ -1,0 +1,68 @@
+{
+  "providers": [
+    {
+      "id": "cisco",
+      "name": "Cisco",
+      "color": "#1BA0D7",
+      "url": "https://www.cisco.com",
+      "logoType": "svg",
+      "category": "networking"
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "color": "#4285F4",
+      "url": "https://grow.google/certificates/",
+      "logoType": "svg",
+      "category": "cloud"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "color": "#CC785C",
+      "url": "https://www.anthropic.com",
+      "logoType": "icon",
+      "category": "ai"
+    },
+    {
+      "id": "helsinki",
+      "name": "University of Helsinki",
+      "color": "#FF6B35",
+      "url": "https://www.elementsofai.com",
+      "logoType": "icon",
+      "category": "ai"
+    },
+    {
+      "id": "ceoe",
+      "name": "CEOE",
+      "color": "#10b981",
+      "url": "https://www.ceoe.es",
+      "logoType": "icon",
+      "category": "digital"
+    },
+    {
+      "id": "udemy",
+      "name": "Udemy",
+      "color": "#A435F0",
+      "url": "https://www.udemy.com",
+      "logoType": "icon",
+      "category": "education"
+    },
+    {
+      "id": "n8n",
+      "name": "n8n",
+      "color": "#FF6D5A",
+      "url": "https://n8n.io",
+      "logoType": "icon",
+      "category": "automation"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "color": "#00A4EF",
+      "url": "https://learn.microsoft.com",
+      "logoType": "svg",
+      "category": "cloud"
+    }
+  ]
+}

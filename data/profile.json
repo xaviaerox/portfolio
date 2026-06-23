@@ -9,7 +9,25 @@
     "github": "https://github.com/xaviaerox",
     "linkedin": "https://www.linkedin.com/in/xaviaerox",
     "philosophy": "La mejor tecnología es la que no se nota. Arquitectura de continuidad, seguridad por diseño y automatización extrema.",
-    "skills_summary": "Infraestructura, Seguridad, Desarrollo Web, Automatización, IA"
+    "skills_summary": "Infraestructura, Seguridad, Desarrollo Web, Automatización, IA",
+    "status": "DISPONIBLE PARA OPORTUNIDADES",
+    "stats": [
+      { "value": "12+", "label": "Años Exp." },
+      { "value": "3+", "label": "Casos Éxito" },
+      { "value": "15+", "label": "Certificados" },
+      { "value": "100%", "label": "Disponibilidad" }
+    ],
+    "traits": [
+      { "icon": "Zap", "label": "Pensador Sistémico", "desc": "Ver la arquitectura de forma holística" },
+      { "icon": "Bot", "label": "Especialista en IA", "desc": "LLMs, RAG, pipelines de IA" },
+      { "icon": "Wrench", "label": "Solucionador de Problemas", "desc": "Depurar cualquier cosa, en cualquier lugar" },
+      { "icon": "Rocket", "label": "Aprendizaje Rápido", "desc": "Nueva tecnología en días, no semanas" },
+      { "icon": "Layers", "label": "Arquitecto", "desc": "Sistemas escalables y limpios" },
+      { "icon": "RefreshCw", "label": "Automatizador", "desc": "Eliminar la repetición a escala" }
+    ],
+    "aboutHeading": ["Técnico por lógica,", "creador", "por pasión."],
+    "contactHeading": ["Vamos a construir", "algo grande", "juntos."],
+    "contactSubtext": "Disponible para roles técnicos senior, consultoría de sistemas y desarrollo de soluciones de IA. Conectemos."
   },
   "en": {
     "name": "Xavi Alonso",
@@ -21,6 +39,24 @@
     "github": "https://github.com/xaviaerox",
     "linkedin": "https://www.linkedin.com/in/xaviaerox",
     "philosophy": "The best technology is the one you don't notice. Continuity architecture, security by design, and extreme automation.",
-    "skills_summary": "Infrastructure, Security, Web Development, Automation, AI"
+    "skills_summary": "Infrastructure, Security, Web Development, Automation, AI",
+    "status": "AVAILABLE FOR OPPORTUNITIES",
+    "stats": [
+      { "value": "12+", "label": "Years Exp." },
+      { "value": "3+", "label": "Success Cases" },
+      { "value": "15+", "label": "Certifications" },
+      { "value": "100%", "label": "Availability" }
+    ],
+    "traits": [
+      { "icon": "Zap", "label": "Systems Thinker", "desc": "See architecture holistically" },
+      { "icon": "Bot", "label": "AI Specialist", "desc": "LLMs, RAG, AI pipelines" },
+      { "icon": "Wrench", "label": "Problem Solver", "desc": "Debug anything, anywhere" },
+      { "icon": "Rocket", "label": "Fast Learner", "desc": "New tech in days, not weeks" },
+      { "icon": "Layers", "label": "Architect", "desc": "Scalable, clean systems" },
+      { "icon": "RefreshCw", "label": "Automator", "desc": "Eliminate repetition at scale" }
+    ],
+    "aboutHeading": ["Technician by logic,", "creator", "by passion."],
+    "contactHeading": ["Let's build", "something great", "together."],
+    "contactSubtext": "Available for senior technical roles, systems consulting, and AI solutions development. Let's connect."
   }
 }

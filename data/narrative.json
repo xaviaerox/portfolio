@@ -1,0 +1,98 @@
+{
+  "es": {
+    "title": "Explora mi viaje",
+    "subtitle": "La historia de un técnico que nunca dejó de aprender",
+    "chapters": [
+      {
+        "id": "ch-1",
+        "title": "Quién soy",
+        "icon": "👤",
+        "content": "Me llamo Xavi, tengo 35 años y llevo más de 12 en el mundo IT. No soy solo un técnico — soy alguien que ve la tecnología como un lenguaje para resolver problemas reales. Desde Almería y Murcia, diseño sistemas que no fallan, automatizo lo que otros repiten, y protejo lo que las empresas más valoran: su operativa diaria.",
+        "highlight": "12+ años construyendo infraestructura invisible que funciona."
+      },
+      {
+        "id": "ch-2",
+        "title": "Cómo empecé",
+        "icon": "🌱",
+        "content": "Todo comenzó en 2012, cuando empecé como técnico junior gestionando parques informáticos. Mientras otros veían solo cables y pantallas, yo veía sistemas, patrones y oportunidades de mejora. Cada problema resuelto me enseñaba algo nuevo. Cada red configurada era un puzzle que me encantaba completar.",
+        "highlight": "De técnico junior a arquitecto de infraestructura."
+      },
+      {
+        "id": "ch-3",
+        "title": "Qué aprendí",
+        "icon": "📚",
+        "content": "Aprendí que la mejor tecnología es la que no se nota. Que la seguridad no es un producto, es una filosofía. Que la automatización no reemplaza personas — las libera para pensar. Con los años he acumulado certificaciones de Google, Cisco, Microsoft, Anthropic y más, no por coleccionar títulos, sino porque cada una representaba un problema real que quería resolver mejor.",
+        "highlight": "15+ certificaciones en ciberseguridad, IA, redes y automatización."
+      },
+      {
+        "id": "ch-4",
+        "title": "Qué construí",
+        "icon": "🔨",
+        "content": "Fundé Solutech para llevar la consultoría IT a otro nivel: arquitectura silenciosa, planes de recuperación ante desastres, y sistemas que reducen costes un 60%. Creé Queryclin, un dashboard para historias clínicas que procesa 100.000 pacientes en milisegundos sin enviar un solo dato a la nube. Desarrollé StockFlow para conectar almacenes con ERPs sin servidores intermediarios.",
+        "highlight": "Soluciones reales para problemas reales."
+      },
+      {
+        "id": "ch-5",
+        "title": "Qué estoy construyendo",
+        "icon": "⚡",
+        "content": "Ahora mismo estoy en modo construcción constante. Sigo formándome en ciberseguridad con Cisco, preparando la certificación Azure Fundamentals, y profundizando en Python y automatización con Google. Cada proyecto personal es un laboratorio donde aplico lo que aprendo. Este portfolio que estás viendo es un ejemplo: no es una página estática, es una plataforma viva que evoluciona conmigo.",
+        "highlight": "Aprendiendo, construyendo y explorando cada día."
+      },
+      {
+        "id": "ch-6",
+        "title": "Hacia dónde voy",
+        "icon": "🚀",
+        "content": "Mi siguiente capítulo está claro: AZ-900, CCNA, certificación de inglés B1/B2, y un grado de especialización — probablemente en Ciberseguridad o Big Data e IA. No me conformo con saber hacer las cosas; quiero entender por qué funcionan y cómo hacerlas mejor. El objetivo final no es acumular credenciales, sino convertirme en el profesional que puede resolver cualquier problema que le pongan delante.",
+        "highlight": "El destino: especialización profunda y excelencia técnica."
+      }
+    ]
+  },
+  "en": {
+    "title": "Explore my journey",
+    "subtitle": "The story of a technician who never stopped learning",
+    "chapters": [
+      {
+        "id": "ch-1",
+        "title": "Who I am",
+        "icon": "👤",
+        "content": "My name is Xavi, I'm 35 years old, and I've spent over 12 years in the IT world. I'm not just a technician — I'm someone who sees technology as a language for solving real problems. From Almería and Murcia, I design systems that don't fail, automate what others repeat, and protect what businesses value most: their daily operations.",
+        "highlight": "12+ years building invisible infrastructure that just works."
+      },
+      {
+        "id": "ch-2",
+        "title": "How I started",
+        "icon": "🌱",
+        "content": "It all began in 2012, when I started as a junior technician managing IT parks. While others saw just cables and screens, I saw systems, patterns, and opportunities for improvement. Every problem solved taught me something new. Every network configured was a puzzle I loved completing.",
+        "highlight": "From junior technician to infrastructure architect."
+      },
+      {
+        "id": "ch-3",
+        "title": "What I learned",
+        "icon": "📚",
+        "content": "I learned that the best technology is the one you don't notice. That security isn't a product, it's a philosophy. That automation doesn't replace people — it frees them to think. Over the years I've accumulated certifications from Google, Cisco, Microsoft, Anthropic and more, not to collect titles, but because each one represented a real problem I wanted to solve better.",
+        "highlight": "15+ certifications in cybersecurity, AI, networking, and automation."
+      },
+      {
+        "id": "ch-4",
+        "title": "What I built",
+        "icon": "🔨",
+        "content": "I founded Solutech to take IT consulting to the next level: silent architecture, disaster recovery plans, and systems that cut costs by 60%. I created Queryclin, a dashboard for clinical records that processes 100,000 patients in milliseconds without sending a single byte to the cloud. I built StockFlow to connect warehouses with ERPs without intermediary servers.",
+        "highlight": "Real solutions for real problems."
+      },
+      {
+        "id": "ch-5",
+        "title": "What I'm building",
+        "icon": "⚡",
+        "content": "Right now I'm in constant build mode. I'm training in cybersecurity with Cisco, preparing for the Azure Fundamentals certification, and deepening my Python and automation skills with Google. Every personal project is a lab where I apply what I learn. This portfolio you're looking at is an example: it's not a static page, it's a living platform that evolves with me.",
+        "highlight": "Learning, building, and exploring every day."
+      },
+      {
+        "id": "ch-6",
+        "title": "Where I'm heading",
+        "icon": "🚀",
+        "content": "My next chapter is clear: AZ-900, CCNA, B1/B2 English certification, and a specialization degree — probably in Cybersecurity or Big Data & AI. I don't settle for knowing how to do things; I want to understand why they work and how to make them better. The ultimate goal isn't to accumulate credentials, but to become the professional who can solve any problem thrown at them.",
+        "highlight": "The destination: deep specialization and technical excellence."
+      }
+    ]
+  }
+}

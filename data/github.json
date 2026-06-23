@@ -1,0 +1,93 @@
+{
+  "username": "xaviaerox",
+  "profileUrl": "https://github.com/xaviaerox",
+  "avatarUrl": "https://github.com/xaviaerox.png",
+  "bio_es": "Operador IT & Arquitecto de Infraestructura",
+  "bio_en": "IT Operator & Infrastructure Architect",
+  "stats": {
+    "publicRepos": 8,
+    "followers": 5,
+    "contributions2024": 320,
+    "contributions2025": 180,
+    "contributions2026": 245
+  },
+  "topLanguages": [
+    { "name": "JavaScript", "percentage": 35, "color": "#f1e05a" },
+    { "name": "HTML", "percentage": 25, "color": "#e34c26" },
+    { "name": "CSS", "percentage": 18, "color": "#563d7c" },
+    { "name": "Python", "percentage": 12, "color": "#3572A5" },
+    { "name": "TypeScript", "percentage": 7, "color": "#3178c6" },
+    { "name": "Shell", "percentage": 3, "color": "#89e051" }
+  ],
+  "repositories": [
+    {
+      "id": "repo-queryclin",
+      "name": "Queryclin",
+      "description_es": "Dashboard inteligente para HCE con privacidad local-first",
+      "description_en": "Smart dashboard for EHR with local-first privacy",
+      "language": "TypeScript",
+      "stars": 2,
+      "forks": 0,
+      "url": "https://github.com/xaviaerox/Queryclin",
+      "topics": ["react", "typescript", "indexeddb", "healthcare"],
+      "relatedProjectId": "proj-1"
+    },
+    {
+      "id": "repo-stockflow",
+      "name": "StockFlow",
+      "description_es": "PWA para gestión de almacén con Dolibarr ERP",
+      "description_en": "PWA for warehouse management with Dolibarr ERP",
+      "language": "JavaScript",
+      "stars": 1,
+      "forks": 0,
+      "url": "https://github.com/xaviaerox/stockflow",
+      "topics": ["pwa", "dolibarr", "erp", "qr-scanner"],
+      "relatedProjectId": "proj-2"
+    },
+    {
+      "id": "repo-solutech",
+      "name": "Solutech",
+      "description_es": "Sitio web y blog de consultoría IT",
+      "description_en": "IT consulting website and blog",
+      "language": "Hugo",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/xaviaerox/solutech",
+      "topics": ["hugo", "blog", "static-site"],
+      "relatedProjectId": "proj-3"
+    },
+    {
+      "id": "repo-portfolio",
+      "name": "Portfolio",
+      "description_es": "Portfolio profesional interactivo",
+      "description_en": "Interactive professional portfolio",
+      "language": "JavaScript",
+      "stars": 0,
+      "forks": 0,
+      "url": "https://github.com/xaviaerox/portfolio",
+      "topics": ["nextjs", "react", "framer-motion", "portfolio"],
+      "relatedProjectId": null
+    }
+  ],
+  "achievements": [
+    {
+      "id": "gh-ach-1",
+      "name_es": "Primer Repositorio Público",
+      "name_en": "First Public Repository",
+      "icon": "🚀",
+      "year": "2023"
+    },
+    {
+      "id": "gh-ach-2",
+      "name_es": "Streak de Contribuciones",
+      "name_en": "Contribution Streak",
+      "icon": "🔥",
+      "year": "2024"
+    }
+  ],
+  "_meta": {
+    "source": "mock",
+    "lastSync": null,
+    "note": "Mock data — prepared for future GitHub API integration"
+  }
+}
