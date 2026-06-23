@@ -34,18 +34,11 @@ export default function Contact() {
         <SectionLabel label={lang === 'es' ? "07 / CONTACTO" : "07 / CONTACT"} center />
         
         <h2 className="text-[clamp(36px,6vw,72px)] font-extrabold text-white font-syne leading-[1.05] mt-6 mb-5">
-          {lang === 'es' ? (
-            <>Vamos a construir<br /><span className="text-brand-accent">algo grande</span> juntos.</>
-          ) : (
-            <>Let's build<br /><span className="text-brand-accent">something great</span> together.</>
-          )}
+          {PROFILE[lang].contactHeading[0]}<br /><span className="text-brand-accent">{PROFILE[lang].contactHeading[1]}</span> {PROFILE[lang].contactHeading[2]}
         </h2>
         
         <p className="text-white/45 text-base leading-relaxed max-w-[480px] mx-auto mb-12 font-sans">
-          {lang === 'es' 
-            ? "Disponible para roles técnicos senior, consultoría de sistemas y desarrollo de soluciones de IA. Conectemos."
-            : "Available for senior technical roles, systems consulting, and AI solutions development. Let's connect."
-          }
+          {PROFILE[lang].contactSubtext}
         </p>
 
         {/* Email */}

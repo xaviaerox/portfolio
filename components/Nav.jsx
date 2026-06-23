@@ -24,6 +24,7 @@ export default function Nav() {
         { label: 'Experiencia', id: 'experience' },
         { label: 'Certificaciones', id: 'certifications' },
         { label: 'Proyectos', id: 'projects' },
+        { label: 'Evolución', id: 'tech-timeline' },
       ]
     : [
         { label: 'About', id: 'about' },
@@ -31,6 +32,7 @@ export default function Nav() {
         { label: 'Experience', id: 'experience' },
         { label: 'Certifications', id: 'certifications' },
         { label: 'Projects', id: 'projects' },
+        { label: 'Evolution', id: 'tech-timeline' },
       ];
 
   const scrollTo = (id) => {

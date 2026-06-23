@@ -8,23 +8,8 @@ import PROFILE from '../data/profile.json';
 export default function About() {
   const { lang } = useLang();
 
-  const traits = lang === 'es'
-    ? [
-        { icon: <Zap size={20} className="text-brand-secondary" />, label: "Pensador Sistémico", desc: "Ver la arquitectura de forma holística" },
-        { icon: <Bot size={20} className="text-brand-secondary" />, label: "Especialista en IA", desc: "LLMs, RAG, pipelines de IA" },
-        { icon: <Wrench size={20} className="text-brand-secondary" />, label: "Solucionador de Problemas", desc: "Depurar cualquier cosa, en cualquier lugar" },
-        { icon: <Rocket size={20} className="text-brand-secondary" />, label: "Aprendizaje Rápido", desc: "Nueva tecnología en días, no semanas" },
-        { icon: <Layers size={20} className="text-brand-secondary" />, label: "Arquitecto", desc: "Sistemas escalables y limpios" },
-        { icon: <RefreshCw size={20} className="text-brand-secondary" />, label: "Automatizador", desc: "Eliminar la repetición a escala" },
-      ]
-    : [
-        { icon: <Zap size={20} className="text-brand-secondary" />, label: "Systems Thinker", desc: "See architecture holistically" },
-        { icon: <Bot size={20} className="text-brand-secondary" />, label: "AI Specialist", desc: "LLMs, RAG, AI pipelines" },
-        { icon: <Wrench size={20} className="text-brand-secondary" />, label: "Problem Solver", desc: "Debug anything, anywhere" },
-        { icon: <Rocket size={20} className="text-brand-secondary" />, label: "Fast Learner", desc: "New tech in days, not weeks" },
-        { icon: <Layers size={20} className="text-brand-secondary" />, label: "Architect", desc: "Scalable, clean systems" },
-        { icon: <RefreshCw size={20} className="text-brand-secondary" />, label: "Automator", desc: "Eliminate repetition at scale" },
-      ];
+  const ICON_MAP = { Zap: <Zap size={20} className="text-brand-secondary" />, Bot: <Bot size={20} className="text-brand-secondary" />, Wrench: <Wrench size={20} className="text-brand-secondary" />, Rocket: <Rocket size={20} className="text-brand-secondary" />, Layers: <Layers size={20} className="text-brand-secondary" />, RefreshCw: <RefreshCw size={20} className="text-brand-secondary" /> };
+  const traits = (PROFILE[lang].traits || []).map(t => ({ ...t, icon: ICON_MAP[t.icon] || <Zap size={20} className="text-brand-secondary" /> }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,11 +37,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="text-[clamp(32px,4vw,52px)] font-extrabold text-white font-syne leading-[1.1] mb-7">
-              {lang === 'es' ? (
-                <>Técnico por lógica,<br /><span className="text-brand-secondary">creador</span> por pasión.</>
-              ) : (
-                <>Technician by logic,<br /><span className="text-brand-secondary">creator</span> by passion.</>
-              )}
+              {PROFILE[lang].aboutHeading[0]}<br /><span className="text-brand-secondary">{PROFILE[lang].aboutHeading[1]}</span> {PROFILE[lang].aboutHeading[2]}
             </h2>
             <p className="text-white/60 text-base leading-relaxed mb-5 font-sans">
               {PROFILE[lang].bio}

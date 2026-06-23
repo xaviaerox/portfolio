@@ -3,17 +3,24 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import { LangProvider } from '../contexts/LangContext';
 
-// Components
+// Original Components
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import TechStack from '../components/TechStack';
 import Experience from '../components/Experience';
-import Certifications from '../components/Certifications';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+
+// V2 Evolution Components
+import CertificationTree from '../components/CertificationTree';
+import KnowledgeGraph from '../components/KnowledgeGraph';
+import TechTimeline from '../components/TechTimeline';
+import ProofOfWork from '../components/ProofOfWork';
+import BuilderDashboard from '../components/BuilderDashboard';
+import NarrativeMode from '../components/NarrativeMode';
 
 export default function Portfolio() {
   useEffect(() => {
@@ -47,11 +54,16 @@ export default function Portfolio() {
       <About />
       <TechStack />
       <Experience />
-      <Certifications />
+      <CertificationTree />
+      <KnowledgeGraph />
       <Projects />
       <Skills />
+      <ProofOfWork />
+      <TechTimeline />
+      <BuilderDashboard />
       <Contact />
       <Footer />
+      <NarrativeMode />
     </LangProvider>
   );
 }

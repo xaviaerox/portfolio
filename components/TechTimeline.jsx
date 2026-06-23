@@ -1,367 +1,159 @@
 'use client';
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLang } from '../contexts/LangContext';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import SectionLabel from './SectionLabel';
-import DATA from '../data/timeline.json';
+import TIMELINE_DATA from '../data/timeline.json';
 
-const TYPE_COLORS = {
-  milestone: '#8b5cf6',
-  technology: '#06b6d4',
-  certification: '#6366f1',
-  project: '#f97316',
-};
-
-const TYPE_LABELS = {
-  es: {
-    all: 'Todo',
-    milestone: 'Hitos',
-    technology: 'Tecnologías',
-    certification: 'Certificaciones',
-    project: 'Proyectos',
-  },
-  en: {
-    all: 'All',
-    milestone: 'Milestones',
-    technology: 'Technologies',
-    certification: 'Certifications',
-    project: 'Projects',
-  },
+const TYPE_CONFIG = {
+  milestone: { color: '#8b5cf6', label_es: 'Hitos', label_en: 'Milestones' },
+  technology: { color: '#06b6d4', label_es: 'Tecnologías', label_en: 'Technologies' },
+  certification: { color: '#6366f1', label_es: 'Certificaciones', label_en: 'Certifications' },
+  project: { color: '#f97316', label_es: 'Proyectos', label_en: 'Projects' },
 };
 
 export default function TechTimeline() {
   const { lang } = useLang();
   const [filter, setFilter] = useState('all');
   const scrollRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
 
-  const items = DATA[lang] || DATA.es;
+  const timeline = TIMELINE_DATA[lang] || [];
 
-  const filtered = useMemo(
-    () => (filter === 'all' ? items : items.filter((e) => e.type === filter)),
-    [items, filter]
-  );
+  const filtered = useMemo(() => {
+    if (filter === 'all') return timeline;
+    return timeline.filter(e => e.type === filter);
+  }, [timeline, filter]);
 
-  // Group events by year for horizontal layout
-  const yearGroups = useMemo(() => {
-    const map = new Map();
-    filtered.forEach((ev) => {
-      if (!map.has(ev.year)) map.set(ev.year, []);
-      map.get(ev.year).push(ev);
-    });
-    return Array.from(map.entries()).sort((a, b) => Number(a[0]) - Number(b[0]));
-  }, [filtered]);
-
-  // Compute year span for subtitle
-  const allYears = items.map((e) => Number(e.year));
-  const minYear = Math.min(...allYears);
-  const maxYear = Math.max(...allYears);
-  const span = maxYear - minYear;
-
-  // Mobile detection
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
-  // Scroll state detection
-  const updateScrollState = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  }, []);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el || isMobile) return;
-    updateScrollState();
-    el.addEventListener('scroll', updateScrollState, { passive: true });
-    window.addEventListener('resize', updateScrollState);
-    return () => {
-      el.removeEventListener('scroll', updateScrollState);
-      window.removeEventListener('resize', updateScrollState);
-    };
-  }, [isMobile, updateScrollState, filtered]);
+  const years = useMemo(() => [...new Set(filtered.map(e => e.year))].sort(), [filtered]);
+  const yearSpan = years.length > 1 ? `${years[0]} — ${years[years.length - 1]}` : years[0] || '';
+  const totalYears = years.length > 1 ? parseInt(years[years.length - 1]) - parseInt(years[0]) : 0;
 
   const scroll = (dir) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * 360, behavior: 'smooth' });
+    scrollRef.current?.scrollBy({ left: dir * 350, behavior: 'smooth' });
   };
 
-  const filterTypes = ['all', 'milestone', 'technology', 'certification', 'project'];
-
   return (
-    <section id="timeline" className="bg-black py-32 px-5">
+    <section id="tech-timeline" className="bg-black py-32 px-5">
       <div className="max-w-[1200px] mx-auto">
-        {/* Header */}
-        <SectionLabel label={lang === 'es' ? 'EVOLUCIÓN TÉCNICA' : 'TECHNICAL EVOLUTION'} />
+        <SectionLabel label={lang === 'es' ? "EVOLUCIÓN TÉCNICA" : "TECHNICAL EVOLUTION"} />
         <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white font-syne mt-4 mb-2">
           {lang === 'es' ? 'Evolución técnica' : 'Technical evolution'}
         </h2>
-        <p className="font-mono text-[13px] text-white/40 mb-10">
-          {minYear} — {maxYear} · {span}{' '}
-          {lang === 'es' ? 'años de evolución' : 'years of evolution'}
+        <p className="text-white/35 text-sm font-mono mb-8">
+          {yearSpan} {totalYears > 0 && `· ${totalYears} ${lang === 'es' ? 'años de evolución' : 'years of evolution'}`}
         </p>
 
-        {/* Filter pills */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {filterTypes.map((type) => {
-            const active = filter === type;
-            const color = type === 'all' ? '#6366f1' : TYPE_COLORS[type];
+        {/* Filters */}
+        <div className="flex gap-2 flex-wrap mb-8">
+          <button onClick={() => setFilter('all')}
+            className={`px-4 py-1.5 rounded-full text-[10px] font-mono tracking-widest border transition-all ${filter === 'all' ? 'bg-white/10 border-white/25 text-white' : 'border-white/10 text-white/40 hover:text-white/70'}`}
+          >
+            {lang === 'es' ? 'TODO' : 'ALL'}
+          </button>
+          {Object.entries(TYPE_CONFIG).map(([type, config]) => (
+            <button key={type} onClick={() => setFilter(type)}
+              className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] font-mono tracking-widest border transition-all ${filter === type ? `border-white/25 text-white` : 'border-white/10 text-white/40 hover:text-white/70'}`}
+              style={filter === type ? { backgroundColor: `${config.color}20`, borderColor: `${config.color}44` } : {}}
+            >
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: config.color }} />
+              {config[`label_${lang}`].toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        {/* Desktop: Horizontal scroll */}
+        <div className="hidden md:block relative">
+          {/* Scroll arrows */}
+          <button onClick={() => scroll(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all">
+            <ChevronLeft size={18} />
+          </button>
+          <button onClick={() => scroll(1)} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all">
+            <ChevronRight size={18} />
+          </button>
+
+          {/* Scroll container */}
+          <div ref={scrollRef} className="overflow-x-auto scrollbar-hide pb-4" style={{ scrollbarWidth: 'none' }}>
+            <div className="flex gap-0 min-w-max px-8">
+              {years.map((year, yi) => {
+                const events = filtered.filter(e => e.year === year);
+                return (
+                  <div key={year} className="flex flex-col items-center" style={{ minWidth: '200px' }}>
+                    {/* Year marker */}
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                      transition={{ delay: yi * 0.05 }}
+                      className="text-lg font-syne font-extrabold text-white mb-4"
+                    >
+                      {year}
+                    </motion.div>
+
+                    {/* Horizontal line segment */}
+                    <div className="w-full h-[2px] relative mb-6">
+                      <div className="absolute inset-0 bg-gradient-to-r from-brand-accent/20 via-brand-secondary/30 to-brand-accent/20" />
+                      <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-3 h-3 rounded-full bg-brand-accent/40 border-2 border-brand-accent" style={{ boxShadow: '0 0 8px rgba(99,102,241,0.5)' }} />
+                    </div>
+
+                    {/* Events */}
+                    <div className="space-y-3 w-full px-2">
+                      {events.map((event, ei) => {
+                        const config = TYPE_CONFIG[event.type] || { color: '#888' };
+                        return (
+                          <motion.div
+                            key={event.id}
+                            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: yi * 0.05 + ei * 0.08 }}
+                            className="bg-white/[0.02] border border-white/5 rounded-xl p-4 hover:border-white/15 transition-all group cursor-default"
+                          >
+                            <div className="flex items-start gap-3">
+                              <span className="text-xl">{event.icon}</span>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-white text-sm font-syne font-bold leading-tight">{event.title}</div>
+                                <div className="text-white/40 text-[11px] font-sans mt-1 leading-relaxed line-clamp-2">{event.description}</div>
+                                <span className="inline-block mt-2 text-[9px] font-mono px-1.5 py-0.5 rounded" style={{ backgroundColor: `${config.color}15`, color: config.color }}>
+                                  {config[`label_${lang}`]}
+                                </span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile: Vertical timeline */}
+        <div className="md:hidden relative">
+          <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-brand-accent/30 to-transparent" />
+
+          {filtered.map((event, i) => {
+            const config = TYPE_CONFIG[event.type] || { color: '#888' };
             return (
-              <button
-                key={type}
-                onClick={() => setFilter(type)}
-                className="relative px-4 py-1.5 rounded-full font-mono text-[11px] tracking-widest uppercase border transition-all duration-300"
-                style={{
-                  backgroundColor: active ? `${color}22` : 'transparent',
-                  borderColor: active ? `${color}66` : 'rgba(255,255,255,0.08)',
-                  color: active ? color : 'rgba(255,255,255,0.45)',
-                  boxShadow: active ? `0 0 16px ${color}33` : 'none',
-                }}
+              <motion.div key={event.id} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.5, delay: i * 0.05 }}
+                className="pl-16 mb-6 relative"
               >
-                {TYPE_LABELS[lang]?.[type] || TYPE_LABELS.es[type]}
-              </button>
+                <div className="absolute left-3.5 top-4 w-5 h-5 rounded-full border-2 border-brand-dark flex items-center justify-center"
+                  style={{ backgroundColor: config.color, boxShadow: `0 0 10px ${config.color}66` }}
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                </div>
+                <div className="bg-white/[0.02] border border-white/5 rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">{event.icon}</span>
+                    <span className="font-mono text-[11px]" style={{ color: config.color }}>{event.year}</span>
+                  </div>
+                  <div className="text-white text-sm font-syne font-bold">{event.title}</div>
+                  <div className="text-white/40 text-[11px] font-sans mt-1 leading-relaxed">{event.description}</div>
+                </div>
+              </motion.div>
             );
           })}
         </div>
-
-        {/* ─── DESKTOP: Horizontal scrollable ─── */}
-        {!isMobile && (
-          <div className="relative">
-            {/* Scroll arrows */}
-            <AnimatePresence>
-              {canScrollLeft && (
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={() => scroll(-1)}
-                  className="absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-colors duration-200"
-                  aria-label="Scroll left"
-                >
-                  <ChevronLeft size={18} />
-                </motion.button>
-              )}
-            </AnimatePresence>
-            <AnimatePresence>
-              {canScrollRight && (
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  onClick={() => scroll(1)}
-                  className="absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-sm flex items-center justify-center text-white/60 hover:text-white hover:bg-white/10 transition-colors duration-200"
-                  aria-label="Scroll right"
-                >
-                  <ChevronRight size={18} />
-                </motion.button>
-              )}
-            </AnimatePresence>
-
-            {/* Fade edges */}
-            {canScrollLeft && (
-              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-            )}
-            {canScrollRight && (
-              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-            )}
-
-            {/* Scrollable area */}
-            <div
-              ref={scrollRef}
-              className="overflow-x-auto scrollbar-hide pb-4"
-              style={{ scrollBehavior: 'smooth', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              <div className="relative inline-flex gap-0 min-w-max pt-2">
-                {/* Horizontal connecting line */}
-                <div className="absolute top-[52px] left-0 right-0 h-[2px] bg-gradient-to-r from-brand-accent/20 via-brand-secondary/30 to-brand-accent/20" />
-
-                {yearGroups.map(([year, events], gi) => (
-                  <div key={year} className="flex flex-col items-start" style={{ minWidth: events.length > 1 ? `${events.length * 260}px` : '280px' }}>
-                    {/* Year marker */}
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: gi * 0.05 }}
-                      className="relative mb-0 ml-6"
-                    >
-                      <span
-                        className="font-syne font-extrabold text-lg"
-                        style={{
-                          color: TYPE_COLORS[events[0]?.type] || '#6366f1',
-                          textShadow: `0 0 20px ${TYPE_COLORS[events[0]?.type] || '#6366f1'}55`,
-                        }}
-                      >
-                        {year}
-                      </span>
-                    </motion.div>
-
-                    {/* Vertical connector */}
-                    <div
-                      className="ml-10 w-[2px] h-5"
-                      style={{
-                        background: `linear-gradient(to bottom, ${TYPE_COLORS[events[0]?.type] || '#6366f1'}88, ${TYPE_COLORS[events[0]?.type] || '#6366f1'}22)`,
-                      }}
-                    />
-
-                    {/* Node dot on the horizontal line */}
-                    <div className="ml-[34px] relative">
-                      <div
-                        className="w-3 h-3 rounded-full border-2 border-black"
-                        style={{
-                          backgroundColor: TYPE_COLORS[events[0]?.type] || '#6366f1',
-                          boxShadow: `0 0 12px ${TYPE_COLORS[events[0]?.type] || '#6366f1'}66`,
-                        }}
-                      />
-                    </div>
-
-                    {/* Vertical line down to cards */}
-                    <div
-                      className="ml-10 w-[2px] h-6"
-                      style={{
-                        background: `linear-gradient(to bottom, ${TYPE_COLORS[events[0]?.type] || '#6366f1'}22, transparent)`,
-                      }}
-                    />
-
-                    {/* Event cards for this year */}
-                    <div className="flex gap-4 px-3">
-                      {events.map((ev, ei) => (
-                        <motion.div
-                          key={ev.id}
-                          initial={{ opacity: 0, y: 24 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true, margin: '-30px' }}
-                          transition={{ duration: 0.5, delay: ei * 0.08 }}
-                          className="w-[240px] group"
-                        >
-                          <div
-                            className="bg-white/[0.02] border border-white/5 rounded-xl p-5 h-full hover:border-white/10 transition-all duration-300 hover:-translate-y-1"
-                            style={{
-                              boxShadow: 'none',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.boxShadow = `0 8px 32px ${TYPE_COLORS[ev.type]}18`;
-                              e.currentTarget.style.borderColor = `${TYPE_COLORS[ev.type]}44`;
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.boxShadow = 'none';
-                              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
-                            }}
-                          >
-                            {/* Icon + type badge */}
-                            <div className="flex items-center justify-between mb-3">
-                              <span className="text-2xl">{ev.icon}</span>
-                              <span
-                                className="font-mono text-[9px] tracking-widest uppercase px-2 py-0.5 rounded-full border"
-                                style={{
-                                  color: TYPE_COLORS[ev.type],
-                                  borderColor: `${TYPE_COLORS[ev.type]}33`,
-                                  backgroundColor: `${TYPE_COLORS[ev.type]}11`,
-                                }}
-                              >
-                                {TYPE_LABELS[lang]?.[ev.type] || ev.type}
-                              </span>
-                            </div>
-                            {/* Title */}
-                            <h4 className="font-syne font-extrabold text-white text-sm mb-2 leading-tight">
-                              {ev.title}
-                            </h4>
-                            {/* Description */}
-                            <p className="text-white/40 text-[12px] leading-relaxed font-sans">
-                              {ev.description}
-                            </p>
-                            {/* Year badge */}
-                            <div className="mt-3 pt-3 border-t border-white/5">
-                              <span
-                                className="font-mono text-[10px] tracking-widest"
-                                style={{ color: TYPE_COLORS[ev.type] }}
-                              >
-                                {ev.year}
-                              </span>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ─── MOBILE: Vertical timeline ─── */}
-        {isMobile && (
-          <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-brand-accent/30 via-brand-secondary/20 to-transparent" />
-
-            <div className="space-y-6">
-              {filtered.map((ev, i) => (
-                <motion.div
-                  key={ev.id}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="relative pl-14"
-                >
-                  {/* Node */}
-                  <div
-                    className="absolute left-[13px] top-5 w-[14px] h-[14px] rounded-full border-2 border-black z-10"
-                    style={{
-                      backgroundColor: TYPE_COLORS[ev.type],
-                      boxShadow: `0 0 14px ${TYPE_COLORS[ev.type]}55`,
-                    }}
-                  />
-
-                  {/* Card */}
-                  <div className="bg-white/[0.02] border border-white/5 rounded-xl p-5">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xl">{ev.icon}</span>
-                      <span
-                        className="font-mono text-[9px] tracking-widest uppercase px-2 py-0.5 rounded-full border"
-                        style={{
-                          color: TYPE_COLORS[ev.type],
-                          borderColor: `${TYPE_COLORS[ev.type]}33`,
-                          backgroundColor: `${TYPE_COLORS[ev.type]}11`,
-                        }}
-                      >
-                        {TYPE_LABELS[lang]?.[ev.type] || ev.type}
-                      </span>
-                      <span className="ml-auto font-mono text-[10px] tracking-widest" style={{ color: TYPE_COLORS[ev.type] }}>
-                        {ev.year}
-                      </span>
-                    </div>
-                    <h4 className="font-syne font-extrabold text-white text-sm mb-1.5">
-                      {ev.title}
-                    </h4>
-                    <p className="text-white/40 text-[12px] leading-relaxed font-sans">
-                      {ev.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
-
-      {/* Hide scrollbar globally for this component */}
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 }

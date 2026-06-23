@@ -75,7 +75,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
           <span className="font-mono text-[11px] text-white/70 tracking-widest uppercase">
-            {lang === 'es' ? 'DISPONIBLE PARA OPORTUNIDADES' : 'AVAILABLE FOR OPPORTUNITIES'}
+            {PROFILE[lang].status}
           </span>
         </motion.div>
 
@@ -151,13 +151,10 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.1 }}
           className="flex gap-12 mt-20 pt-12 border-t border-white/10"
         >
-          {(lang === 'es' 
-            ? [["12+", "Años Exp."], ["3+", "Casos Éxito"], ["6+", "Certificados"], ["100%", "Disponibilidad"]]
-            : [["12+", "Years Exp."], ["3+", "Success Cases"], ["6+", "Certifications"], ["100%", "Availability"]]
-          ).map(([n, l]) => (
-            <div key={l}>
-              <div className="text-3xl md:text-4xl font-extrabold text-white font-syne leading-none mb-2">{n}</div>
-              <div className="text-[11px] text-white/40 font-mono tracking-widest uppercase">{l}</div>
+          {PROFILE[lang].stats.map((s) => (
+            <div key={s.label}>
+              <div className="text-3xl md:text-4xl font-extrabold text-white font-syne leading-none mb-2">{s.value}</div>
+              <div className="text-[11px] text-white/40 font-mono tracking-widest uppercase">{s.label}</div>
             </div>
           ))}
         </motion.div>

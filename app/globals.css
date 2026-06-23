@@ -6,9 +6,26 @@ html {
 }
 
 body {
-  background-color: #0c0a09;
+  background-color: #05050f;
   color: #ffffff;
   overflow-x: hidden;
+}
+
+/* Scrollbar hide utility for timeline */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @keyframes blink {

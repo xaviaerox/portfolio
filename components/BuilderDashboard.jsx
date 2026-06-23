@@ -1,186 +1,96 @@
 'use client';
-import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLang } from '../contexts/LangContext';
 import SectionLabel from './SectionLabel';
-import DATA from '../data/learning-paths.json';
+import LEARNING from '../data/learning-paths.json';
 
-/* ── category config ────────────────────────────────────────── */
-
-const CATEGORIES = [
-  {
-    key: 'learning',
-    label_es: 'Aprendiendo',
-    label_en: 'Learning',
-    color: '#06b6d4',
-    dotClass: 'bg-cyan-400',
-  },
-  {
-    key: 'building',
-    label_es: 'Construyendo',
-    label_en: 'Building',
-    color: '#f97316',
-    dotClass: 'bg-orange-400',
-  },
-  {
-    key: 'exploring',
-    label_es: 'Explorando',
-    label_en: 'Exploring',
-    color: '#8b5cf6',
-    dotClass: 'bg-violet-400',
-  },
-  {
-    key: 'nextGoals',
-    label_es: 'Próximos Objetivos',
-    label_en: 'Next Goals',
-    color: '#10b981',
-    dotClass: 'bg-emerald-400',
-  },
-];
-
-const STATUS_DOTS = {
-  active:      '#06b6d4',
-  completed:   '#22c55e',
-  planned:     '#eab308',
+const STATUS_COLORS = {
+  active: '#06b6d4',
+  completed: '#10b981',
+  planned: '#eab308',
   researching: '#8b5cf6',
-  evaluating:  '#f97316',
+  evaluating: '#f97316',
 };
 
-const PRIORITY_COLORS = {
-  high:   { bg: 'bg-red-500/15',    text: 'text-red-400',    border: 'border-red-500/30' },
-  medium: { bg: 'bg-amber-500/15',  text: 'text-amber-400',  border: 'border-amber-500/30' },
-  low:    { bg: 'bg-emerald-500/15', text: 'text-emerald-400', border: 'border-emerald-500/30' },
+const CATEGORY_CONFIG = {
+  learning: { color: '#06b6d4', label_es: 'Aprendiendo', label_en: 'Learning', icon: '📡' },
+  building: { color: '#f97316', label_es: 'Construyendo', label_en: 'Building', icon: '🔨' },
+  exploring: { color: '#8b5cf6', label_es: 'Explorando', label_en: 'Exploring', icon: '🧭' },
+  nextGoals: { color: '#10b981', label_es: 'Próximos Objetivos', label_en: 'Next Goals', icon: '🎯' },
 };
 
-/* ── progress bar ───────────────────────────────────────────── */
+const PRIORITY_COLORS = { high: '#ef4444', medium: '#eab308', low: '#06b6d4' };
 
-function ProgressBar({ progress, color }) {
-  return (
-    <div className="relative h-1.5 w-full rounded-full bg-white/[0.06] overflow-hidden mt-1.5">
-      <motion.div
-        className="absolute inset-y-0 left-0 rounded-full"
-        style={{ background: color }}
-        initial={{ width: 0 }}
-        whileInView={{ width: `${progress}%` }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-      />
-      <span
-        className="absolute right-0 -top-4 font-mono text-[10px] tabular-nums"
-        style={{ color }}
-      >
-        {progress}%
-      </span>
-    </div>
-  );
-}
-
-/* ── terminal card ──────────────────────────────────────────── */
-
-function TerminalCard({ category, items, lang, index }) {
-  const label = lang === 'es' ? category.label_es : category.label_en;
+function TerminalCard({ category, items, lang, delay }) {
+  const config = CATEGORY_CONFIG[category];
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="relative bg-white/[0.02] border border-white/5 rounded-xl overflow-hidden
-                 hover:border-white/10 transition-all duration-300 group"
+      transition={{ duration: 0.6, delay }}
+      className="bg-white/[0.02] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors group"
     >
-      {/* scan-line overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 z-10 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.04) 2px, rgba(255,255,255,0.04) 4px)',
-        }}
-      />
-
-      {/* ── title bar ─────── */}
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/5 bg-white/[0.01]">
-        {/* colored dot */}
-        <span
-          className="w-3 h-3 rounded-full shrink-0"
-          style={{ background: category.color, boxShadow: `0 0 8px ${category.color}55` }}
-        />
-        <span
-          className="font-mono text-[11px] tracking-[0.2em] uppercase font-bold"
-          style={{ color: category.color }}
-        >
-          {label}
-        </span>
-        {/* decorative dots */}
-        <div className="ml-auto flex gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-white/10" />
-          <span className="w-2 h-2 rounded-full bg-white/10" />
-          <span className="w-2 h-2 rounded-full bg-white/10" />
+      {/* Terminal title bar */}
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/5" style={{ backgroundColor: `${config.color}08` }}>
+        <div className="flex gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: config.color, boxShadow: `0 0 6px ${config.color}66` }} />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/10" />
         </div>
+        <span className="text-[10px] font-mono tracking-widest uppercase ml-2" style={{ color: config.color }}>
+          {config.icon} {config[`label_${lang}`]}
+        </span>
       </div>
 
-      {/* ── items ─────── */}
-      <div className="p-4 space-y-3 relative z-20">
+      {/* Items */}
+      <div className="p-4 space-y-3">
         {items.map((item, i) => (
           <motion.div
             key={item.id}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 + i * 0.08 }}
-            className="group/item"
+            transition={{ delay: delay + 0.1 + i * 0.05 }}
+            className="flex items-start gap-3"
           >
-            <div className="flex items-start gap-3">
-              {/* status dot */}
-              <span
-                className="mt-1.5 w-2 h-2 rounded-full shrink-0"
-                style={{
-                  background: STATUS_DOTS[item.status] || '#6b7280',
-                  boxShadow: `0 0 6px ${STATUS_DOTS[item.status] || '#6b7280'}44`,
-                }}
-              />
+            {/* Status dot */}
+            <span className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: STATUS_COLORS[item.status] || '#666', boxShadow: item.status === 'active' ? `0 0 6px ${STATUS_COLORS.active}88` : 'none' }} />
 
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-sm shrink-0">{item.icon}</span>
-                  <p className="text-white/80 text-[13px] font-medium leading-tight truncate">
-                    {item.name}
-                  </p>
-                </div>
-
-                {/* provider sub-label (learning items) */}
-                {item.provider && (
-                  <p className="font-mono text-[10px] text-white/25 tracking-wider mt-0.5 ml-6">
-                    {item.provider}
-                  </p>
-                )}
-
-                {/* progress bar (learning items) */}
-                {typeof item.progress === 'number' && item.progress > 0 && (
-                  <div className="mt-2 ml-6">
-                    <ProgressBar progress={item.progress} color={category.color} />
-                  </div>
-                )}
-
-                {/* next goals: priority + target */}
-                {item.priority && (
-                  <div className="flex items-center gap-2 mt-1.5 ml-6 flex-wrap">
-                    <span
-                      className={`font-mono text-[9px] tracking-widest uppercase px-2 py-0.5
-                                  rounded border ${PRIORITY_COLORS[item.priority]?.bg || ''}
-                                  ${PRIORITY_COLORS[item.priority]?.text || 'text-white/40'}
-                                  ${PRIORITY_COLORS[item.priority]?.border || 'border-white/10'}`}
-                    >
-                      {item.priority}
-                    </span>
-                    {item.target && (
-                      <span className="font-mono text-[10px] text-white/25 tracking-wider">
-                        → {item.target}
-                      </span>
-                    )}
-                  </div>
-                )}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline gap-2 flex-wrap">
+                <span className="text-white text-sm font-syne font-semibold">{item.name}</span>
+                {item.provider && <span className="text-[10px] font-mono text-white/30">{item.provider}</span>}
               </div>
+
+              {/* Progress bar for learning */}
+              {item.progress !== undefined && item.progress > 0 && (
+                <div className="mt-1.5">
+                  <div className="h-[2px] bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${item.progress}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: delay + 0.3 }}
+                      className="h-full rounded-full"
+                      style={{ backgroundColor: config.color, boxShadow: `0 0 6px ${config.color}66` }}
+                    />
+                  </div>
+                  <div className="text-[9px] font-mono text-white/25 mt-0.5 text-right">{item.progress}%</div>
+                </div>
+              )}
+
+              {/* Priority + target for goals */}
+              {item.priority && (
+                <div className="flex gap-2 mt-1">
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded"
+                    style={{ backgroundColor: `${PRIORITY_COLORS[item.priority]}15`, color: PRIORITY_COLORS[item.priority] }}>
+                    {item.priority.toUpperCase()}
+                  </span>
+                  {item.target && <span className="text-[9px] font-mono text-white/25">{item.target}</span>}
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
@@ -189,60 +99,36 @@ function TerminalCard({ category, items, lang, index }) {
   );
 }
 
-/* ── main section ───────────────────────────────────────────── */
-
 export default function BuilderDashboard() {
   const { lang } = useLang();
-  const focus = DATA.currentFocus[lang] || DATA.currentFocus.es;
+  const focus = LEARNING.currentFocus[lang];
 
   return (
-    <section className="bg-brand-dark/95 py-32 px-5 relative overflow-hidden">
-      {/* ambient glow */}
-      <div
-        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full blur-[160px] opacity-[0.07]"
-        style={{ background: 'radial-gradient(circle, #6366f1, transparent 70%)' }}
+    <section id="builder-dashboard" className="bg-brand-dark/95 py-32 px-5 relative">
+      {/* Subtle scanline overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
+        style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)' }}
       />
 
       <div className="max-w-[1200px] mx-auto relative z-10">
-        {/* ── header ─────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <SectionLabel label={lang === 'es' ? 'Dashboard' : 'Dashboard'} />
-
-          <h2 className="font-syne font-extrabold text-white text-4xl md:text-5xl mt-4">
-            {lang === 'es' ? 'Foco Actual' : 'Current Focus'}
-          </h2>
-
-          <p className="text-white/50 mt-3 max-w-xl text-lg">
-            {lang === 'es'
-              ? 'Lo que estoy construyendo ahora mismo'
-              : "What I'm building right now"}
+        <SectionLabel label={lang === 'es' ? "FOCO ACTUAL" : "CURRENT FOCUS"} />
+        <h2 className="text-[clamp(28px,3.5vw,48px)] font-extrabold text-white font-syne mt-4 mb-2">
+          {lang === 'es' ? 'Foco actual' : 'Current focus'}
+        </h2>
+        <div className="flex items-center gap-4 mb-10">
+          <p className="text-white/35 text-sm font-mono">
+            {lang === 'es' ? 'Lo que estoy construyendo ahora mismo' : 'What I\'m building right now'}
           </p>
+          <span className="text-[10px] font-mono text-white/20 px-2 py-0.5 rounded border border-white/5">
+            {lang === 'es' ? 'Actualizado' : 'Updated'}: {LEARNING.lastUpdated}
+          </span>
+        </div>
 
-          {DATA.lastUpdated && (
-            <p className="font-mono text-[11px] text-white/20 tracking-widest mt-4">
-              {lang === 'es' ? 'Última actualización' : 'Last updated'}:{' '}
-              {DATA.lastUpdated}
-            </p>
-          )}
-        </motion.div>
-
-        {/* ── 2×2 grid ─────── */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {CATEGORIES.map((cat, i) => (
-            <TerminalCard
-              key={cat.key}
-              category={cat}
-              items={focus[cat.key] || []}
-              lang={lang}
-              index={i}
-            />
-          ))}
+          <TerminalCard category="learning" items={focus.learning} lang={lang} delay={0} />
+          <TerminalCard category="building" items={focus.building} lang={lang} delay={0.1} />
+          <TerminalCard category="exploring" items={focus.exploring} lang={lang} delay={0.2} />
+          <TerminalCard category="nextGoals" items={focus.nextGoals} lang={lang} delay={0.3} />
         </div>
       </div>
     </section>
