@@ -24,6 +24,7 @@ function ProviderIcon({ provider, color, size = 18 }) {
   if (provider === 'CEOE') return <Building color={color} size={size} />;
   if (provider === 'Udemy') return <GraduationCap color={color} size={size} />;
   if (provider === 'n8n') return <Workflow color={color} size={size} />;
+  if (provider === 'Inglés') return <span style={{ fontSize: size }} className="leading-none select-none">🇬🇧</span>;
   return <span className="font-mono font-black text-xs" style={{ color }}>{provider[0]}</span>;
 }
 

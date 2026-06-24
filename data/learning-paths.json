@@ -21,7 +21,7 @@
         { "id": "ng-1", "name": "Certificación AZ-900 (Azure Fundamentals)", "target": "2026", "priority": "high", "icon": "☁️" },
         { "id": "ng-2", "name": "Cisco CCNA", "target": "2026-2027", "priority": "high", "icon": "🌐" },
         { "id": "ng-3", "name": "English for IT II", "target": "2026", "priority": "medium", "icon": "📘" },
-        { "id": "ng-4", "name": "Certificado de Inglés B1/B2", "target": "2026-2027", "priority": "medium", "icon": "🇬🇧" },
+        { "id": "ng-4", "name": "Certificado de Inglés B2", "target": "2026-2027", "priority": "medium", "icon": "🇬🇧" },
         { "id": "ng-5", "name": "Grado de Especialización", "target": "2027", "priority": "high", "icon": "🎓" }
       ]
     },
@@ -46,10 +46,10 @@
         { "id": "ng-1", "name": "AZ-900 Certification (Azure Fundamentals)", "target": "2026", "priority": "high", "icon": "☁️" },
         { "id": "ng-2", "name": "Cisco CCNA", "target": "2026-2027", "priority": "high", "icon": "🌐" },
         { "id": "ng-3", "name": "English for IT II", "target": "2026", "priority": "medium", "icon": "📘" },
-        { "id": "ng-4", "name": "English Certificate B1/B2", "target": "2026-2027", "priority": "medium", "icon": "🇬🇧" },
+        { "id": "ng-4", "name": "English Certificate B2", "target": "2026-2027", "priority": "medium", "icon": "🇬🇧" },
         { "id": "ng-5", "name": "Specialization Degree", "target": "2027", "priority": "high", "icon": "🎓" }
       ]
     }
   },
-  "lastUpdated": "2026-06-23"
+  "lastUpdated": "2026-06-24"
 }

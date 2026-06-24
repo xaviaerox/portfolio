@@ -201,5 +201,20 @@
         "credly_badge_id": "be958f9d-8d62-4a9e-8e67-334e2a551c6c"
       }
     ]
+  },
+  {
+    "id": "cert-ingles",
+    "provider": "Inglés",
+    "color": "#E30613",
+    "icon": "🇬🇧",
+    "items": [
+      {
+        "name_es": "Certificado de Inglés B1",
+        "name_en": "B1 English Certificate",
+        "year": "2026",
+        "skills_es": ["Inglés", "Comunicación"],
+        "skills_en": ["English", "Communication"]
+      }
+    ]
   }
 ]

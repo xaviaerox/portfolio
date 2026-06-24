@@ -7,6 +7,7 @@
     { "id": "cert-microsoft", "type": "certification", "label": "Microsoft", "group": "microsoft" },
     { "id": "cert-udemy", "type": "certification", "label": "Udemy", "group": "udemy" },
     { "id": "cert-n8n", "type": "certification", "label": "n8n", "group": "n8n" },
+    { "id": "cert-ingles", "type": "certification", "label": "Inglés (B1)", "group": "ingles" },
 
     { "id": "skill-cybersecurity", "type": "skill", "label_es": "Ciberseguridad", "label_en": "Cybersecurity" },
     { "id": "skill-networking", "type": "skill", "label_es": "Redes", "label_en": "Networking" },
@@ -20,6 +21,7 @@
     { "id": "skill-linux", "type": "skill", "label_es": "Linux", "label_en": "Linux" },
     { "id": "skill-llm", "type": "skill", "label_es": "LLMs", "label_en": "LLMs" },
     { "id": "skill-ml", "type": "skill", "label_es": "Machine Learning", "label_en": "Machine Learning" },
+    { "id": "skill-english", "type": "skill", "label_es": "Inglés", "label_en": "English" },
 
     { "id": "proj-1", "type": "project", "label": "Queryclin" },
     { "id": "proj-2", "type": "project", "label": "StockFlow" },
@@ -33,6 +35,8 @@
   "edges": [
     { "from": "cert-cisco", "to": "skill-cybersecurity", "strength": 0.9 },
     { "from": "cert-cisco", "to": "skill-networking", "strength": 1.0 },
+    { "from": "cert-cisco", "to": "skill-english", "strength": 0.6 },
+    { "from": "cert-ingles", "to": "skill-english", "strength": 1.0 },
     { "from": "cert-google", "to": "skill-cybersecurity", "strength": 0.8 },
     { "from": "cert-google", "to": "skill-python", "strength": 0.7 },
     { "from": "cert-google", "to": "skill-ai", "strength": 0.9 },

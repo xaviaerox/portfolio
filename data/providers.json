@@ -63,6 +63,14 @@
       "url": "https://learn.microsoft.com",
       "logoType": "svg",
       "category": "cloud"
+    },
+    {
+      "id": "ingles",
+      "name": "Inglés",
+      "color": "#E30613",
+      "url": "",
+      "logoType": "icon",
+      "category": "languages"
     }
   ]
 }
