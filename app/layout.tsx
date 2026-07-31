@@ -1,4 +1,6 @@
 import './globals.css';
+import React from 'react';
+import type { Metadata } from 'next';
 import { Syne, JetBrains_Mono, Space_Mono } from 'next/font/google';
 
 const syne = Syne({
@@ -20,13 +22,27 @@ const spaceMono = Space_Mono({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
-  description: 'Portafolio profesional de Xavi Alonso, especialista en infraestructuras críticas, seguridad operativa y alta disponibilidad. Creador de Queryclin y StockFlow.',
+  description:
+    'Portafolio profesional de Xavi Alonso, especialista en infraestructuras críticas, seguridad operativa y alta disponibilidad. Creador de Queryclin y StockFlow.',
   keywords: [
-    'Xavi Alonso', 'IT Operator', 'Operador IT', 'Infrastructure Architect', 'Arquitecto de Infraestructura', 
-    'Alta Disponibilidad', 'Seguridad Operativa', 'Ciberseguridad', 'Dolibarr ERP', 'Queryclin', 'StockFlow',
-    'Sistemas Críticos', 'Proxmox', 'Zero Trust', 'DevOps', 'Desarrollador Web'
+    'Xavi Alonso',
+    'IT Operator',
+    'Operador IT',
+    'Infrastructure Architect',
+    'Arquitecto de Infraestructura',
+    'Alta Disponibilidad',
+    'Seguridad Operativa',
+    'Ciberseguridad',
+    'Dolibarr ERP',
+    'Queryclin',
+    'StockFlow',
+    'Sistemas Críticos',
+    'Proxmox',
+    'Zero Trust',
+    'DevOps',
+    'Desarrollador Web',
   ],
   authors: [{ name: 'Xavi Alonso' }],
   creator: 'Xavi Alonso',
@@ -40,7 +56,8 @@ export const metadata = {
   },
   openGraph: {
     title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
-    description: 'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
+    description:
+      'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
     url: 'https://xaviaerox.github.io/portfolio/',
     siteName: 'Xavi Alonso Portfolio',
     images: [
@@ -57,15 +74,16 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Xavi Alonso | Operador IT & Arquitecto de Infraestructura',
-    description: 'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
+    description:
+      'Especialista en infraestructuras críticas y seguridad operativa con más de 12 años de trayectoria. Conoce mis proyectos como Queryclin y StockFlow.',
     images: ['https://xaviaerox.github.io/portfolio/xavi-alonso.jpg'],
   },
-}
+};
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${syne.variable} ${jetbrainsMono.variable} ${spaceMono.variable}`}>
       <body className="antialiased font-sans">{children}</body>
     </html>
-  )
+  );
 }

@@ -2,7 +2,7 @@
   "currentFocus": {
     "es": {
       "learning": [
-        { "id": "lp-1", "name": "Ciberseguridad y Redes", "provider": "Cisco", "status": "active", "progress": 65, "icon": "🛡️" },
+        { "id": "lp-1", "name": "Ciberseguridad y Redes", "provider": "Cisco", "status": "active", "progress": 75, "icon": "🛡️" },
         { "id": "lp-2", "name": "Azure Fundamentals (AZ-900)", "provider": "Microsoft", "status": "active", "progress": 40, "icon": "☁️" },
         { "id": "lp-3", "name": "Python y Automatización", "provider": "Google", "status": "active", "progress": 55, "icon": "🐍" },
         { "id": "lp-4", "name": "English for IT II", "provider": "Cisco", "status": "planned", "progress": 0, "icon": "🌐" }
@@ -27,7 +27,7 @@
     },
     "en": {
       "learning": [
-        { "id": "lp-1", "name": "Cybersecurity & Networking", "provider": "Cisco", "status": "active", "progress": 65, "icon": "🛡️" },
+        { "id": "lp-1", "name": "Cybersecurity & Networking", "provider": "Cisco", "status": "active", "progress": 75, "icon": "🛡️" },
         { "id": "lp-2", "name": "Azure Fundamentals (AZ-900)", "provider": "Microsoft", "status": "active", "progress": 40, "icon": "☁️" },
         { "id": "lp-3", "name": "Python & Automation", "provider": "Google", "status": "active", "progress": 55, "icon": "🐍" },
         { "id": "lp-4", "name": "English for IT II", "provider": "Cisco", "status": "planned", "progress": 0, "icon": "🌐" }
@@ -51,5 +51,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-06-24"
+  "lastUpdated": "2026-07-31"
 }

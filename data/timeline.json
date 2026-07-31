@@ -18,7 +18,8 @@
     { "id": "tl-16", "year": "2026", "type": "certification", "title": "Google AI Agents Intensive", "description": "Curso intensivo de 5 días sobre agentes de IA con Vertex AI y Gemini.", "icon": "⚡", "color": "#4285F4", "relatedCerts": ["cert-google"] },
     { "id": "tl-17", "year": "2026", "type": "technology", "title": "n8n & Automatización Avanzada", "description": "Automatización de flujos de trabajo complejos con n8n.", "icon": "🔄", "color": "#FF6D5A", "relatedSkills": ["Automatización"] },
     { "id": "tl-18", "year": "2026", "type": "milestone", "title": "Portfolio V2 — Digital Professional Twin", "description": "Evolución del portfolio hacia una plataforma profesional viva basada en datos.", "icon": "✦", "color": "#6366f1" },
-    { "id": "tl-19", "year": "2026", "type": "certification", "title": "Certificado Inglés B1", "description": "Obtención del certificado oficial de nivel B1 de inglés (24/06/2026).", "icon": "🇬🇧", "color": "#E30613", "relatedCerts": ["cert-ingles"] }
+    { "id": "tl-19", "year": "2026", "type": "certification", "title": "Certificado Inglés B1", "description": "Obtención del certificado oficial de nivel B1 de inglés (24/06/2026).", "icon": "🇬🇧", "color": "#E30613", "relatedCerts": ["cert-ingles"] },
+    { "id": "tl-20", "year": "2026", "type": "certification", "title": "Cisco Networking Devices & Config", "description": "Certificación en dispositivos de red y configuración inicial de switches y routers (30/07/2026).", "icon": "🌐", "color": "#1BA0D7", "relatedCerts": ["cert-cisco"] }
   ],
   "en": [
     { "id": "tl-1", "year": "2012", "type": "milestone", "title": "Systems Administration Beginnings", "description": "First steps as a systems technician, managing IT parks and networks.", "icon": "💻", "color": "#8b5cf6", "relatedSkills": ["Windows Server", "Active Directory", "Hardware"] },
@@ -39,6 +40,7 @@
     { "id": "tl-16", "year": "2026", "type": "certification", "title": "Google AI Agents Intensive", "description": "5-day intensive course on AI agents with Vertex AI and Gemini.", "icon": "⚡", "color": "#4285F4", "relatedCerts": ["cert-google"] },
     { "id": "tl-17", "year": "2026", "type": "technology", "title": "n8n & Advanced Automation", "description": "Complex workflow automation with n8n.", "icon": "🔄", "color": "#FF6D5A", "relatedSkills": ["Automation"] },
     { "id": "tl-18", "year": "2026", "type": "milestone", "title": "Portfolio V2 — Digital Professional Twin", "description": "Portfolio evolution into a live, data-driven professional platform.", "icon": "✦", "color": "#6366f1" },
-    { "id": "tl-19", "year": "2026", "type": "certification", "title": "B1 English Certificate", "description": "Obtained the official B1 English language certification (06/24/2026).", "icon": "🇬🇧", "color": "#E30613", "relatedCerts": ["cert-ingles"] }
+    { "id": "tl-19", "year": "2026", "type": "certification", "title": "B1 English Certificate", "description": "Obtained the official B1 English language certification (06/24/2026).", "icon": "🇬🇧", "color": "#E30613", "relatedCerts": ["cert-ingles"] },
+    { "id": "tl-20", "year": "2026", "type": "certification", "title": "Cisco Networking Devices & Config", "description": "Certification in network devices and initial configuration of switches and routers (07/30/2026).", "icon": "🌐", "color": "#1BA0D7", "relatedCerts": ["cert-cisco"] }
   ]
 }

@@ -33,6 +33,15 @@
         "skills_en": ["Networking", "IP Addressing", "Connectivity"],
         "badge": "certificaciones/CISCO/networking-basics.png",
         "pdf": "certificaciones/CISCO/NetworkingBasicsUpdate20260529-31-rwcw7j.pdf"
+      },
+      {
+        "name_es": "Networking Devices and Initial Configuration",
+        "name_en": "Networking Devices and Initial Configuration",
+        "year": "2026",
+        "skills_es": ["Redes", "Dispositivos de Red", "Configuración Inicial", "Cisco"],
+        "skills_en": ["Networking", "Network Devices", "Initial Configuration", "Cisco"],
+        "badge": "certificaciones/CISCO/networking-devices-and-initial-configuration.png",
+        "pdf": "certificaciones/CISCO/NetworkingDevicesandBasicConfigUpdate20260730-20-9vnrib.pdf"
       }
     ]
   },
