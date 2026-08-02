@@ -1,18 +1,32 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLang } from '../contexts/LangContext';
+import { useLang } from '@/contexts/LangContext';
 import { X } from 'lucide-react';
-import NARRATIVE from '../data/narrative.json';
+import NARRATIVE from '@/data/narrative.json';
+
+interface NarrativeChapter {
+  id: string;
+  title: string;
+  icon: string;
+  content: string;
+  highlight: string;
+}
+
+interface NarrativeData {
+  title: string;
+  subtitle: string;
+  chapters: NarrativeChapter[];
+}
 
 export default function NarrativeMode() {
   const { lang } = useLang();
   const [open, setOpen] = useState(false);
   const [activeChapter, setActiveChapter] = useState(0);
-  const scrollRef = useRef(null);
-  const chapterRefs = useRef([]);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const chapterRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const data = NARRATIVE[lang];
+  const data = (NARRATIVE as Record<string, NarrativeData>)[lang] || NARRATIVE.es;
 
   // Lock/unlock body scroll
   useEffect(() => {
@@ -21,12 +35,16 @@ export default function NarrativeMode() {
     } else {
       document.body.style.overflow = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [open]);
 
   // ESC to close
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
@@ -51,32 +69,41 @@ export default function NarrativeMode() {
     return () => container.removeEventListener('scroll', onScroll);
   }, [open]);
 
-  const scrollToChapter = (i) => {
+  const scrollToChapter = (i: number) => {
     chapterRefs.current[i]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   return (
     <>
-      {/* ── Floating Button ── */}
+      {/* ── Floating Button (Positioned above CommandPalette Ctrl+K) ── */}
       <motion.button
-        onClick={() => { setOpen(true); setActiveChapter(0); }}
-        className="fixed bottom-6 right-6 z-[90] bg-brand-accent/20 backdrop-blur-lg border border-brand-accent/40 text-brand-accent px-5 py-3 rounded-full font-mono text-sm tracking-wider shadow-[0_0_30px_rgba(99,102,241,0.3)] hover:shadow-[0_0_50px_rgba(99,102,241,0.5)] hover:bg-brand-accent/30 transition-all"
-        animate={{ y: [0, -4, 0] }}
+        onClick={() => {
+          setOpen(true);
+          setActiveChapter(0);
+        }}
+        aria-label="Abrir modo Mi viaje"
+        className="fixed bottom-[74px] right-6 z-[90] bg-brand-accent/20 backdrop-blur-lg border border-brand-accent/40 text-brand-accent px-4 py-2 rounded-full font-mono text-xs tracking-wider shadow-[0_0_25px_rgba(99,102,241,0.25)] hover:shadow-[0_0_40px_rgba(99,102,241,0.5)] hover:bg-brand-accent/30 transition-all flex items-center gap-2"
+        animate={{ y: [0, -3, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
       >
-        ✦ {lang === 'es' ? 'Mi viaje' : 'My Journey'}
+        <span>✦</span>
+        <span>{lang === 'es' ? 'Mi viaje' : 'My Journey'}</span>
       </motion.button>
 
       {/* ── Fullscreen Overlay ── */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-[200] bg-[#05050f]/98 backdrop-blur-xl"
           >
             {/* Close button */}
-            <button onClick={() => setOpen(false)}
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Cerrar modo narrativo"
               className="fixed top-6 right-6 z-[210] w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all"
             >
               <X size={18} />
@@ -85,11 +112,27 @@ export default function NarrativeMode() {
             {/* Progress dots */}
             <div className="fixed left-6 top-1/2 -translate-y-1/2 z-[210] hidden md:flex flex-col gap-3">
               {data.chapters.map((ch, i) => (
-                <button key={ch.id} onClick={() => scrollToChapter(i)}
+                <button
+                  key={ch.id}
+                  onClick={() => scrollToChapter(i)}
                   className="group flex items-center gap-3"
                 >
-                  <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === activeChapter ? 'bg-brand-accent scale-125 shadow-[0_0_8px_rgba(99,102,241,0.6)]' : i < activeChapter ? 'bg-brand-accent/50' : 'bg-white/15'}`} />
-                  <span className={`text-[10px] font-mono transition-all duration-300 ${i === activeChapter ? 'text-brand-accent opacity-100' : 'text-white/30 opacity-0 group-hover:opacity-100'}`}>
+                  <div
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      i === activeChapter
+                        ? 'bg-brand-accent scale-125 shadow-[0_0_8px_rgba(99,102,241,0.6)]'
+                        : i < activeChapter
+                        ? 'bg-brand-accent/50'
+                        : 'bg-white/15'
+                    }`}
+                  />
+                  <span
+                    className={`text-[10px] font-mono transition-all duration-300 ${
+                      i === activeChapter
+                        ? 'text-brand-accent opacity-100'
+                        : 'text-white/30 opacity-0 group-hover:opacity-100'
+                    }`}
+                  >
                     {ch.title}
                   </span>
                 </button>
@@ -101,7 +144,8 @@ export default function NarrativeMode() {
               {/* Header */}
               <div className="min-h-[60vh] flex flex-col items-center justify-center px-5 text-center">
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <div className="text-4xl mb-6">✦</div>
@@ -117,7 +161,9 @@ export default function NarrativeMode() {
               {data.chapters.map((chapter, i) => (
                 <div
                   key={chapter.id}
-                  ref={el => { chapterRefs.current[i] = el; }}
+                  ref={(el) => {
+                    chapterRefs.current[i] = el;
+                  }}
                   className="min-h-[70vh] flex items-center justify-center px-5 py-20"
                 >
                   <motion.div
@@ -166,12 +212,20 @@ export default function NarrativeMode() {
                     {/* CTA on last chapter */}
                     {i === data.chapters.length - 1 && (
                       <motion.div
-                        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: false }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: false }}
                         transition={{ delay: 0.5 }}
                         className="mt-12 text-center"
                       >
                         <button
-                          onClick={() => { setOpen(false); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 300); }}
+                          onClick={() => {
+                            setOpen(false);
+                            setTimeout(
+                              () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }),
+                              300
+                            );
+                          }}
                           className="bg-brand-accent text-white px-8 py-3.5 rounded-lg text-sm font-mono tracking-widest shadow-[0_0_40px_rgba(99,102,241,0.3)] hover:-translate-y-1 hover:shadow-[0_8px_50px_rgba(99,102,241,0.5)] transition-all"
                         >
                           {lang === 'es' ? 'CONECTEMOS →' : "LET'S CONNECT →"}
