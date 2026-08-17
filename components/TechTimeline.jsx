@@ -64,17 +64,25 @@ export default function TechTimeline() {
 
         {/* Desktop: Horizontal scroll */}
         <div className="hidden md:block relative">
-          {/* Scroll arrows */}
-          <button onClick={() => scroll(-1)} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all">
-            <ChevronLeft size={18} />
+          {/* Scroll arrows positioned directly inline with the timeline bar */}
+          <button
+            onClick={() => scroll(-1)}
+            className="absolute left-0 top-[45px] -translate-y-1/2 -translate-x-4 z-20 w-10 h-10 rounded-full bg-brand-dark/90 border border-brand-accent/40 text-brand-secondary hover:text-white hover:bg-brand-accent/30 hover:border-brand-secondary/60 hover:scale-110 shadow-lg shadow-brand-accent/20 transition-all flex items-center justify-center cursor-pointer"
+            aria-label={lang === 'es' ? 'Anterior' : 'Previous'}
+          >
+            <ChevronLeft size={20} />
           </button>
-          <button onClick={() => scroll(1)} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 rounded-full bg-black/80 border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-white/30 transition-all">
-            <ChevronRight size={18} />
+          <button
+            onClick={() => scroll(1)}
+            className="absolute right-0 top-[45px] -translate-y-1/2 translate-x-4 z-20 w-10 h-10 rounded-full bg-brand-dark/90 border border-brand-accent/40 text-brand-secondary hover:text-white hover:bg-brand-accent/30 hover:border-brand-secondary/60 hover:scale-110 shadow-lg shadow-brand-accent/20 transition-all flex items-center justify-center cursor-pointer"
+            aria-label={lang === 'es' ? 'Siguiente' : 'Next'}
+          >
+            <ChevronRight size={20} />
           </button>
 
           {/* Scroll container */}
           <div ref={scrollRef} className="overflow-x-auto scrollbar-hide pb-4" style={{ scrollbarWidth: 'none' }}>
-            <div className="flex gap-0 min-w-max px-8">
+            <div className="flex gap-0 min-w-max px-12">
               {years.map((year, yi) => {
                 const events = filtered.filter(e => e.year === year);
                 return (

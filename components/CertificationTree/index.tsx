@@ -250,6 +250,8 @@ export default function CertificationTree() {
                       key={`provider-node-${p.id}`}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
+                      whileHover={{ scale: 1.08 }}
+                      style={{ transformOrigin: `${p.x}px ${p.y}px`, transformBox: 'fill-box' }}
                       transition={{ type: 'spring', delay: 0.3 + i * 0.08 }}
                       onMouseEnter={() => setActiveProvider(p.id)}
                       onMouseLeave={() => setActiveProvider(null)}
@@ -299,15 +301,21 @@ export default function CertificationTree() {
                           }
                           className="cursor-pointer group"
                         >
-                          <circle
+                          <motion.circle
                             cx={c.x}
                             cy={c.y}
                             r="10"
                             fill={p.color}
-                            fillOpacity="0.2"
+                            fillOpacity={0.25}
                             stroke={p.color}
-                            strokeWidth="1.5"
-                            className="transition-transform group-hover:scale-125"
+                            strokeWidth={1.5}
+                            style={{ transformOrigin: `${c.x}px ${c.y}px`, transformBox: 'fill-box' }}
+                            whileHover={{
+                              scale: 1.4,
+                              fillOpacity: 0.75,
+                              strokeWidth: 2.5,
+                            }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
                           />
                           <title>{certTitle}</title>
                         </motion.g>
