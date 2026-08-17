@@ -1,15 +1,18 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/sync-cv.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "sync:cv": "node scripts/sync-cv.js",
+    "version:check": "node scripts/verify-version.js"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

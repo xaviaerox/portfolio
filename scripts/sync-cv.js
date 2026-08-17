@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const RENDERCV_OUTPUT = path.join('C:', 'Users', 'Xaviaerox', 'Documents', 'GitHub', 'rendercv', 'rendercv_output');
+const relativeRenderCV = path.resolve(__dirname, '..', '..', 'rendercv', 'rendercv_output');
+const absoluteRenderCV = path.join('C:', 'Users', 'Xaviaerox', 'Documents', 'GitHub', 'rendercv', 'rendercv_output');
+const RENDERCV_OUTPUT = fs.existsSync(relativeRenderCV) ? relativeRenderCV : absoluteRenderCV;
 const PUBLIC_CV_DIR = path.join(__dirname, '..', 'public', 'cv');
 
 function syncCV() {

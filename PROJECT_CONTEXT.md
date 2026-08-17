@@ -20,7 +20,7 @@
 
 **Repositorio:** `https://github.com/xaviaerox/portfolio`
 
-**Versión actual:** 0.1.0 (Portfolio Evolution V2)
+**Versión actual:** 0.2.0 (Portfolio Evolution V2)
 
 **Última actualización:** 2026-07-31
 
